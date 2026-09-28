@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+import soins from '../data/soins.json';
+import rituels from '../data/rituels.json';
+const wa = (msg: string) => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(msg)}`;
+---
+<Base title="MEDI-SPA Saly — Wellness & Spa in Saly, Senegal" description="MEDI-SPA Saly, rated 4.8/5 in Saly Portudal, Senegal. Massages, facials, hammam, waxing. Book on WhatsApp." lang="en" path="/en/">
+  <div class="bg-sauge text-sable text-[11px] tracking-[.25em] uppercase text-center py-2 px-4">Saly Portudal · <a class="underline" href={wa('Hello MEDI-SPA Saly')}>{site.telephone}</a></div>
+  <header id="nav" class="sticky top-0 z-40 bg-creme/90 backdrop-blur border-b border-encre/10 transition-shadow">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+      <a href="/en/" class="font-serif text-2xl">MEDI<span class="text-argile">-</span>SPA<span class="block font-sans font-light text-[10px] tracking-[.4em] uppercase mt-1">Saly</span></a>
+      <div class="flex items-center gap-3">
+        <a href="/" lang="fr" hreflang="fr" aria-label="Version française" class="text-[11px] tracking-[.2em] uppercase opacity-70 hover:opacity-100 transition">FR</a>
+        <a href={wa('Hello, I would like to book.')} target="_blank" class="bg-encre text-sable px-6 py-2.5 text-xs tracking-[.25em] uppercase">Book</a>
+      </div>
+    </div>
+  </header>
+  <section class="max-w-7xl mx-auto px-5 md:px-8 pt-12 pb-16 grid lg:grid-cols-2 gap-10 items-center">
+    <div>
+      <p class="hero-in text-[11px] tracking-[.35em] uppercase text-dore mb-5" style="animation-delay:.05s">Face Totem Saly · 78 595 15 15</p>
+      <h1 class="hero-in font-serif text-5xl md:text-7xl leading-[1.02]" style="animation-delay:.15s">Physio, massage,<br />hammam.</h1>
+      <p class="hero-in mt-6 font-light text-encre/70 max-w-md" style="animation-delay:.3s">Wellness centre in Saly Portudal. Late nights Fridays & Saturdays, 6–9pm.</p>
+      <div class="hero-in mt-8" style="animation-delay:.45s">
+        <a href={wa('Hello, I would like to book a treatment.')} target="_blank" class="bg-argile text-encre px-8 py-4 text-xs tracking-[.25em] uppercase font-medium">Book on WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-in frame-gold" style="animation-delay:.35s">
+      <img src="/images/reelles/facade.jpg" alt="MEDI-SPA Saly" width="1280" height="718" fetchpriority="high" loading="eager" class="w-full h-[300px] md:h-[400px] object-cover rounded-sm" />
+    </div>
+  </section>
+  <section class="max-w-7xl mx-auto px-5 md:px-8 pb-20">
+    <h2 class="reveal font-serif text-4xl mb-2">Treatments</h2>
+    <p class="reveal font-light text-sm text-encre/70 mb-8">Prices on WhatsApp</p>
+    <div class="border-t border-encre/15">
+      {soins.map((s, i) => (
+        <a href={wa('Hello, I would like: ' + s.titre)} target="_blank" style={`--d:${i * 0.05}s`} class="reveal menu-row group flex items-baseline py-5 border-b border-encre/15">
+          <span class="font-serif text-2xl md:text-3xl">{s.titre}</span>
+          <span class="menu-dots" aria-hidden="true"></span>
+          <span class="ml-4 text-argile text-xl leading-none group-hover:translate-x-1.5 transition duration-300" aria-hidden="true">→</span>
+        </a>
+      ))}
+    </div>
+    <h2 class="reveal font-serif text-4xl mt-16 mb-8">Rituals</h2>
+    <div class="grid md:grid-cols-3 gap-5">
+      {rituels.map((r) => (
+        <div class={`reveal p-8 text-center rounded-sm border ${r.vedette ? 'bg-encre text-sable' : 'bg-white border-encre/10'}`}>
+          <p class={`text-[11px] tracking-[.3em] uppercase ${r.vedette ? 'text-argile' : 'text-dore'}`}>{r.duree}</p>
+          <h3 class="font-serif text-2xl mt-2">{r.nom}</h3>
+          <p class="font-light text-sm mt-3 opacity-70">{r.contenu}</p>
+        </div>
+      ))}
+    </div>
+    <div class="reveal mt-12 bg-white border border-encre/10 p-8 rounded-sm font-light">
+      <p>{site.adresse} · {site.telephone} · {site.email}</p>
+      <p class="font-light mt-2 opacity-70">{site.horaires}</p>
+    </div>
+  </section>
+  <footer class="bg-encre text-sable/50 text-center py-10 px-5">
+    <p class="font-serif text-xl text-sable">MEDI<span class="text-argile">-</span>SPA Saly</p>
+  </footer>
+</Base>

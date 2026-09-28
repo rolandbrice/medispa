@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+import site from '../data/site.json';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+  path?: string;
+}
+const { title, description, lang = 'fr', path = '/' } = Astro.props;
+const wa = (msg: string) => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(msg)}`;
+---
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={`https://medi-spa-saly.sn${path}`} />
+  {lang === 'fr'
+    ? <link rel="alternate" hreflang="en" href="https://medi-spa-saly.sn/en/" />
+    : <link rel="alternate" hreflang="fr" href="https://medi-spa-saly.sn/" />}
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://medi-spa-saly.sn/images/hero-massage.jpg" />
+  <meta name="theme-color" content="#F6F1E7" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "name": "MEDI-SPA Saly",
+    "image": "https://medi-spa-saly.sn/images/hero-massage.jpg",
+    "address": { "@type": "PostalAddress", "addressLocality": "Saly Portudal", "addressCountry": "SN" },
+    "telephone": site.telephone,
+    "email": site.email,
+    "url": "https://medi-spa-saly.sn",
+    "priceRange": "FCFA",
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "70" },
+    "openingHours": "Mo-Sa 09:00-20:00",
+    "sameAs": [site.instagram, site.ficheGoogle]
+  })} />
+</head>
+<body class="bg-creme text-encre font-sans antialiased">
+  <a href="#contenu" class="skip-link">Aller au contenu</a>
+  <main id="contenu">
+    <slot />
+  </main>
+
+  <!-- Barre sticky mobile : appeler / WhatsApp -->
+  <nav aria-label="Contact rapide" class="fixed bottom-0 inset-x-0 z-50 md:hidden grid grid-cols-2 border-t border-encre/10 bg-creme/95 backdrop-blur">
+    <a href={`tel:${site.telephone.replace(/\s/g, '')}`} class="text-center py-3.5 text-xs tracking-[.25em] uppercase">Appeler</a>
+    <a href={wa('Bonjour MEDI-SPA Saly, je souhaite réserver.')} target="_blank" rel="noopener" class="text-center py-3.5 text-xs tracking-[.25em] uppercase bg-encre text-sable">WhatsApp</a>
+  </nav>
+  <div class="h-12 md:hidden"></div>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    const nav = document.getElementById('nav');
+    addEventListener('scroll', () => {
+      nav?.classList.toggle('shadow-[0_10px_30px_-15px_rgba(30,42,38,.25)]', scrollY > 12);
+    }, { passive: true });
+  </script>
+</body>
+</html>
