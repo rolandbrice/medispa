@@ -40,7 +40,7 @@ describe('schemaService', () => {
     const s = schemaService(soin, { ...site, demo: false }, 'en', BASE, 'https://x/img.jpg') as any;
     expect(s.url).toBe('https://medi-spa-saly.sn/en/treatments/massage-saly/');
     expect(s.offers).toEqual([
-      { '@type': 'Offer', name: '60 min', price: 20000, priceCurrency: 'XOF' },
+      { '@type': 'Offer', name: '60\u00a0min', price: 20000, priceCurrency: 'XOF' },
       { '@type': 'Offer', name: 'Assessment', price: 0, priceCurrency: 'XOF' },
     ]);
   });
