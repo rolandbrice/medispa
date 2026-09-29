@@ -1,34 +1,31 @@
-# STACK — MEDI-SPA Saly : pourquoi PAS WordPress
-
-## Stack retenue (proposée au client)
+# Stack — MEDI-SPA Saly
 
 | Couche | Choix | Pourquoi |
 |---|---|---|
-| **Site** | **Astro 7 (statique)** | Pages HTML ultra-légères (<100 Ko), chargement <1,5s en 4G à Saly. Pas de base de données à pirater, pas de mise à jour PHP. |
-| **Style** | **TailwindCSS 3** | Design premium sur-mesure (pas de thème générique). |
-| **Contenus** | **JSON éditable (`src/data/`)** | Tarifs, soins, rituels, horaires = petits fichiers texte. |
-| **Admin cliente** | **Decap CMS 3 (`/admin`)** | Interface simple en français : la gérante modifie tarifs/photos/horaires **depuis son téléphone**, comme WhatsApp. Zéro code. |
-| **Médias** | **Images locales `/public/images`** | 10 visuels premium déjà intégrés (~1,5 Mo total). À remplacer par vraies photos du spa. |
-| **Réservation** | **WhatsApp deep links + formulaire → WhatsApp** | 95% des clientes de Saly réservent via WhatsApp. Chaque soin a son message pré-rempli → tracking. Évolutif vers Calendly/Cal.com temps réel. |
-| **Hébergement** | **Cloudflare Pages ou Netlify (gratuit)** | HTTPS auto, CDN mondial, déploiement à chaque modification validée dans l'admin. Coût : 0 FCFA/mois. |
-| **Langues** | **FR (`/`) + EN (`/en/`)** | Clientèle touristes FR/EN. |
-| **SEO** | **Schema.org BeautySalon + sitemap + meta** | Objectif : « massage Saly », « hammam Saly », « spa Saly ». |
+| Site | Astro 7, statique | Pages légères, rapides en 4G à Saly. Pas de base de données à pirater ni de mises à jour PHP. |
+| Style | Tailwind 4 | Direction artistique sur mesure, pas de thème générique. |
+| Typographie | Young Serif + Hanken Grotesk, auto-hébergées | Aucune dépendance à Google Fonts, affichage immédiat. |
+| Images | `astro:assets` (AVIF / WebP, tailles adaptées) | Photos nettes et légères sur téléphone. |
+| Contenu | JSON validé par schéma | Tarifs, soins, horaires modifiables sans toucher au code, et erreurs bloquées au build. |
+| Réservation | Parcours guidé → message WhatsApp complet | 95 % des clientes de Saly réservent déjà par WhatsApp ; la gérante reçoit soin, formule, prix, jour, moment et prénom. |
+| Carte cadeau | Formulaire avec aperçu → WhatsApp, paiement Wave / Orange Money | Pas de paiement à intégrer en phase 1. |
+| Langues | FR (`/`) et EN (`/en/`) | Clientèle touristique francophone et anglophone. |
+| SEO | Schema.org DaySpa, Service, FAQ, fil d'Ariane ; sitemap ; hreflang | Cible : « massage Saly », « hammam Saly », « spa Saly ». |
+| Qualité | Vitest (81 tests) + `npm run verifier` sur les 23 pages | Aucune régression silencieuse. |
+| Mises à jour | Par le prestataire, sur demande WhatsApp (forfait maintenance) | La gérante n'a aucun outil à apprendre. |
+| Hébergement | Cloudflare Pages ou Netlify | HTTPS automatique, CDN, 0 FCFA par mois. |
 
-## Pourquoi pas WordPress ?
-1. **Maintenance** : WP = mises à jour PHP/plugins chaque mois, piratage fréquent au SN sans infogérant. Ici : rien à mettre à jour côté cliente.
-2. **Vitesse** : WP + page builder = 2–4s à Dakar/Saly. Ici : ~1s, crucial pour touristes en 4G et SEO Google.
-3. **Coût** : WP = hébergement mutualisé 30–60k FCFA/an + maintenance. Ici : hébergement statique gratuit, maintenance quasi nulle.
-4. **Simplicité cliente** : admin WP = 40 menus qui font peur. Admin Decap = 2 rubriques : « Infos » et « Catalogue ».
-5. **Sécurité** : pas de base SQL, pas de login WP à brute-forcer. L'admin Decap passe par GitHub/Netlify Identity avec invitation.
+**Mesures Lighthouse mobile** (accueil et fiche soin, hors `noindex` de démo) : Performance 100, Accessibilité 100, Bonnes pratiques 100, SEO 100.
 
-## Limites assumées
-- Pas de paiement en ligne natif (Phase 2 : lien Wave/Orange Money sur carte cadeau + rituels).
-- Pas de calendrier temps réel en Phase 1 (WhatsApp suffit ; Phase 2 : Cal.com自-hosté ou Calendly, ~0–15$/mois).
-- L'admin nécessite GitHub + Netlify/Cloudflare au setup (fait par nous, invisible pour la cliente ensuite).
+## Pourquoi pas WordPress
 
-## Commandes
-```bash
-npm run dev     # prévisualisation locale http://localhost:4321
-npm run build   # build statique -> dist/
-npm run preview # tester le build
-```
+1. **Maintenance** : pas de mises à jour de plugins ni de failles PHP à surveiller.
+2. **Vitesse** : environ 1,5 s en 4G, contre 2 à 4 s pour un WordPress avec constructeur de pages.
+3. **Coût** : hébergement gratuit.
+4. **Sécurité** : pas de base de données ni de page de connexion à attaquer.
+
+## Limites assumées (phase 2)
+
+- Paiement en ligne intégré.
+- Calendrier en temps réel et rappels automatiques J-1.
+- Pas d'interface d'administration pour la gérante : c'est un choix commercial, les modifications passent par le forfait maintenance.
