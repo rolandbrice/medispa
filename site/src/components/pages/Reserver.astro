@@ -58,7 +58,7 @@ const legende = 'font-serif text-3xl';
     </p>
 
     <form id="form-resa" hidden novalidate class="grid gap-12 lg:grid-cols-12">
-      <div class="space-y-12 lg:col-span-8">
+      <div class="min-w-0 space-y-12 lg:col-span-8">
         <fieldset>
           <legend class={legende}>{_('resa.etape1')}</legend>
           <div class="mt-5 flex flex-wrap gap-2">
@@ -84,7 +84,7 @@ const legende = 'font-serif text-3xl';
         <fieldset>
           <legend class={legende}>{_('resa.etape4')}</legend>
           <div class="mt-5 grid grid-cols-3 gap-2">
-            {CRENEAUX.map((c) => <label class="pastille"><input type="radio" name="creneau" value={c} class="sr-only" disabled />{_(`creneau.${c}` as Cle)}</label>)}
+            {CRENEAUX.map((c) => <label class="pastille whitespace-nowrap px-2"><input type="radio" name="creneau" value={c} class="sr-only" disabled />{_(`creneau.${c}` as Cle)}</label>)}
           </div>
           <label for="prenom" class="mt-10 block font-semibold">{_('resa.prenom')}</label>
           <input id="prenom" name="prenom" autocomplete="given-name" maxlength="60" class="mt-2 w-full rounded-2xl border border-profond/25 bg-white px-4 py-3.5 text-lg outline-none transition-colors focus:border-profond" />

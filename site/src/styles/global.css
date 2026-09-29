@@ -23,6 +23,8 @@
   :focus-visible { outline: 3px solid var(--color-profond); outline-offset: 3px; }
   .bg-profond :focus-visible { outline-color: #fff; }
   summary::-webkit-details-marker { display: none; }
+  /* Un fieldset refuse par défaut de rétrécir sous la largeur de son contenu : on l'y autorise */
+  fieldset { min-inline-size: 0; }
 }
 
 /* Logo de l'enseigne : un seul fichier SVG en cache, coloré par la couleur du texte */
