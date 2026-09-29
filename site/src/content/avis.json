@@ -1,0 +1,20 @@
+[
+  {
+    "id": "g1",
+    "auteur": "Fatou-Maty D.",
+    "date": "2026-09",
+    "note": 5,
+    "texte": "Un excellent spa sur Saly avec un très bon rapport qualité prix. Une équipe très professionnelle, Sabine a l’accueil adorable et Geneviève excellente masseuse. A recommander les yeux fermés.",
+    "langue": "fr",
+    "source": "google"
+  },
+  {
+    "id": "g2",
+    "auteur": "Fatou F.",
+    "date": "2026-03",
+    "note": 5,
+    "texte": "Excellent place for Épilation et massage ! Affordable. Geneviève is the specialist in épilation. She is professionnal and very boundaried!",
+    "langue": "en",
+    "source": "google"
+  }
+]

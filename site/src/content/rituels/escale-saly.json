@@ -1,0 +1,11 @@
+{
+  "ordre": 1,
+  "nom": { "fr": "Escale Saly", "en": "Saly Stopover" },
+  "duree": "60 min",
+  "contenu": {
+    "fr": ["Gommage corps", "Massage dos & épaules 30 min", "Soin éclat visage express"],
+    "en": ["Body scrub", "30-min back & shoulder massage", "Express radiance facial"]
+  },
+  "prix": 25000,
+  "vedette": false
+}

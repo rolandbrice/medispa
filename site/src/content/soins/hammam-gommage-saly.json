@@ -1,0 +1,46 @@
+{
+  "ordre": 3,
+  "categorie": "eau",
+  "vedette": true,
+  "image": "../../assets/photos/hammam.jpg",
+  "imageAlt": { "fr": "Vapeur du hammam", "en": "Steam in the hammam" },
+  "titre": { "fr": "Hammam & gommage", "en": "Hammam & scrub" },
+  "accroche": {
+    "fr": "La chaleur ouvre, le gommage révèle : on ressort avec une peau neuve.",
+    "en": "The heat opens up, the scrub reveals: you leave with brand-new skin."
+  },
+  "description": {
+    "fr": "Le rituel du hammam commence par la vapeur, qui détend les muscles et prépare la peau. Vient ensuite le gommage au gant, qui retire les peaux mortes, puis un temps de repos. C'est le complément idéal d'une journée de plage, ou la meilleure façon de préparer un massage.",
+    "en": "The hammam ritual starts with steam, which relaxes the muscles and prepares the skin. Then comes the glove scrub, which removes dead skin, followed by time to rest. It is the perfect complement to a beach day, or the best way to prepare for a massage."
+  },
+  "deroule": {
+    "fr": ["Vapeur chaude pour détendre et ouvrir les pores.", "Application du savon.", "Gommage au gant sur tout le corps.", "Rinçage, hydratation et repos."],
+    "en": ["Warm steam to relax and open the pores.", "Soap is applied.", "Full-body glove scrub.", "Rinse, moisturise and rest."]
+  },
+  "bienfaits": {
+    "fr": ["Peau lisse et douce", "Muscles détendus", "Prépare la peau au bronzage et au massage"],
+    "en": ["Smooth, soft skin", "Relaxed muscles", "Prepares the skin for tanning and massage"]
+  },
+  "tarifs": [
+    { "duree": "30 min", "libelle": { "fr": "Hammam seul", "en": "Hammam only" }, "prix": 8000 },
+    { "duree": "45 min", "libelle": { "fr": "Hammam + gommage", "en": "Hammam + scrub" }, "prix": 15000 },
+    { "duree": "60 min", "libelle": { "fr": "Hammam + gommage + enveloppement", "en": "Hammam + scrub + body wrap" }, "prix": 20000 }
+  ],
+  "faq": [
+    {
+      "q": { "fr": "Faut-il apporter un maillot ?", "en": "Should I bring a swimsuit?" },
+      "r": { "fr": "Ce n'est pas nécessaire : tout le linge est fourni. Vous pouvez en apporter un si vous préférez.", "en": "No need: all linen is provided. You are welcome to bring one if you prefer." }
+    },
+    {
+      "q": { "fr": "Hammam et massage le même jour ?", "en": "Hammam and massage on the same day?" },
+      "r": { "fr": "C'est même l'ordre idéal. Le rituel Teranga Glow réunit les deux.", "en": "That is the ideal order. The Teranga Glow ritual combines both." }
+    }
+  ],
+  "seo": {
+    "titre": { "fr": "Hammam à Saly — hammam, gommage, enveloppement | MEDI-SPA Saly", "en": "Hammam in Saly, Senegal — steam, scrub, body wrap | MEDI-SPA Saly" },
+    "description": {
+      "fr": "Hammam et gommage au gant à Saly Portudal, face au Totem. Vapeur, gommage, enveloppement. Idéal après la plage. Réservation WhatsApp.",
+      "en": "Hammam and glove scrub in Saly Portudal, opposite the Totem. Steam, scrub, body wrap. Perfect after the beach. Book on WhatsApp."
+    }
+  }
+}

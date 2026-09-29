@@ -1,0 +1,41 @@
+{
+  "ordre": 6,
+  "categorie": "eau",
+  "vedette": false,
+  "image": "../../assets/photos/balneo.jpg",
+  "imageAlt": { "fr": "Bain bouillonnant de balnéothérapie", "en": "Whirlpool balneotherapy bath" },
+  "titre": { "fr": "Balnéo", "en": "Balneotherapy" },
+  "accroche": {
+    "fr": "L'eau chaude qui masse : trente minutes d'apesanteur, seule ou à deux.",
+    "en": "Warm water that massages: thirty minutes of weightlessness, alone or together."
+  },
+  "description": {
+    "fr": "Les jets d'eau chaude massent tout le corps en douceur et dénouent les tensions sans effort. La balnéo se suffit à elle-même, ou prépare parfaitement un massage. Idéale en fin de journée, notamment lors de nos soirées nocturnes.",
+    "en": "Warm water jets gently massage the whole body and ease tension effortlessly. Balneotherapy is lovely on its own or as the perfect prelude to a massage. Ideal at the end of the day, especially during our late-night evenings."
+  },
+  "deroule": {
+    "fr": ["Douche et installation.", "Bain bouillonnant à température douce.", "Repos et boisson."],
+    "en": ["Shower and settle in.", "Whirlpool bath at a gentle temperature.", "Rest and a drink."]
+  },
+  "bienfaits": {
+    "fr": ["Détente musculaire globale", "Circulation stimulée, jambes légères", "Un moment à partager à deux"],
+    "en": ["All-over muscle relaxation", "Boosted circulation, lighter legs", "A moment to share as a couple"]
+  },
+  "tarifs": [
+    { "duree": "30 min", "libelle": { "fr": "Solo", "en": "Solo" }, "prix": 10000 },
+    { "duree": "30 min", "libelle": { "fr": "Duo", "en": "Couple" }, "prix": 18000 }
+  ],
+  "faq": [
+    {
+      "q": { "fr": "Est-ce déconseillé dans certains cas ?", "en": "Is it unsuitable in some cases?" },
+      "r": { "fr": "En cas de grossesse, de problème cardiaque ou de circulation, signalez-le-nous avant de réserver.", "en": "If you are pregnant or have heart or circulation problems, please tell us before booking." }
+    }
+  ],
+  "seo": {
+    "titre": { "fr": "Balnéo à Saly — bain bouillonnant solo ou duo | MEDI-SPA Saly", "en": "Balneotherapy in Saly, Senegal — whirlpool bath for one or two | MEDI-SPA Saly" },
+    "description": {
+      "fr": "Balnéothérapie à Saly Portudal : bain bouillonnant chaud, seul ou en duo, face au Totem. Parfait avant un massage. Réservation WhatsApp.",
+      "en": "Balneotherapy in Saly Portudal: warm whirlpool bath, alone or as a couple, opposite the Totem. Perfect before a massage. Book on WhatsApp."
+    }
+  }
+}

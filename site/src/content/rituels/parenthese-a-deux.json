@@ -1,0 +1,11 @@
+{
+  "ordre": 3,
+  "nom": { "fr": "Parenthèse à deux", "en": "Time for Two" },
+  "duree": "75 min",
+  "contenu": {
+    "fr": ["Balnéo duo 15 min", "Massage duo 60 min, côte à côte", "Pour couples, amies, mère et fille"],
+    "en": ["15-min couple balneotherapy", "60-min couple massage, side by side", "For couples, friends, mothers and daughters"]
+  },
+  "prix": 55000,
+  "vedette": false
+}

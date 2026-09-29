@@ -1,0 +1,49 @@
+{
+  "ordre": 4,
+  "categorie": "beaute",
+  "vedette": false,
+  "image": "../../assets/photos/epilation.jpg",
+  "imageAlt": { "fr": "Soin beauté en institut", "en": "Beauty treatment at the salon" },
+  "titre": { "fr": "Épilation", "en": "Waxing" },
+  "accroche": {
+    "fr": "Précise, rapide et hygiénique, pour le visage comme pour le corps.",
+    "en": "Precise, quick and hygienic, for face and body."
+  },
+  "description": {
+    "fr": "Une épilation réussie tient à trois choses : une cire adaptée, un geste sûr et une hygiène sans faille. Spatule à usage unique, peau préparée puis apaisée après : vous repartez sans rougeur durable, prête pour la plage.",
+    "en": "Good waxing comes down to three things: the right wax, a confident hand and flawless hygiene. Single-use spatulas, skin prepared beforehand and soothed afterwards: you leave without lasting redness, ready for the beach."
+  },
+  "deroule": {
+    "fr": ["Préparation et nettoyage de la zone.", "Épilation à la cire, zone par zone.", "Soin apaisant pour finir."],
+    "en": ["The area is prepared and cleansed.", "Waxing, zone by zone.", "A soothing lotion to finish."]
+  },
+  "bienfaits": {
+    "fr": ["Peau nette pendant plusieurs semaines", "Hygiène stricte, matériel à usage unique", "Toutes zones, toutes peaux"],
+    "en": ["Smooth skin for several weeks", "Strict hygiene, single-use tools", "Every area, every skin type"]
+  },
+  "tarifs": [
+    { "libelle": { "fr": "Sourcils", "en": "Eyebrows" }, "prix": 3000 },
+    { "libelle": { "fr": "Lèvre supérieure", "en": "Upper lip" }, "prix": 2000 },
+    { "libelle": { "fr": "Aisselles", "en": "Underarms" }, "prix": 5000 },
+    { "libelle": { "fr": "Maillot classique", "en": "Bikini line" }, "prix": 7000 },
+    { "libelle": { "fr": "Demi-jambes", "en": "Half legs" }, "prix": 8000 },
+    { "libelle": { "fr": "Jambes complètes", "en": "Full legs" }, "prix": 12000 }
+  ],
+  "faq": [
+    {
+      "q": { "fr": "Quelle longueur de poils faut-il ?", "en": "How long should the hair be?" },
+      "r": { "fr": "Environ un demi-centimètre, soit trois semaines sans rasage, pour un résultat net.", "en": "About half a centimetre, roughly three weeks without shaving, for a clean result." }
+    },
+    {
+      "q": { "fr": "Peut-on aller au soleil juste après ?", "en": "Can I go in the sun straight afterwards?" },
+      "r": { "fr": "Mieux vaut attendre 24 heures avant une exposition directe ou une baignade en mer.", "en": "It is best to wait 24 hours before direct sun exposure or swimming in the sea." }
+    }
+  ],
+  "seo": {
+    "titre": { "fr": "Épilation à Saly — sourcils, jambes, maillot | MEDI-SPA Saly", "en": "Waxing in Saly, Senegal — brows, legs, bikini | MEDI-SPA Saly" },
+    "description": {
+      "fr": "Épilation à la cire à Saly Portudal : sourcils, aisselles, maillot, jambes. Hygiène stricte, matériel à usage unique. Réservation WhatsApp.",
+      "en": "Waxing in Saly Portudal: brows, underarms, bikini line, legs. Strict hygiene, single-use tools. Book on WhatsApp."
+    }
+  }
+}

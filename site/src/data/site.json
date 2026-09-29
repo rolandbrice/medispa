@@ -1,13 +1,51 @@
 {
+  "demo": true,
   "nom": "MEDI-SPA Saly",
-  "baseline": "Centre de bien-être à Saly Portudal",
   "telephone": "+221 78 595 15 15",
   "whatsapp": "221785951515",
   "email": "medispasaly@gmail.com",
-  "instagram": "https://www.instagram.com/medi_spa_saly",
-  "adresse": "Face Totem Saly, Saly Portudal",
-  "horaires": "Lun – Sam · 9h – 20h · Dim sur RDV",
-  "noteGoogle": "4,8/5",
-  "nbAvis": "70+",
-  "ficheGoogle": "https://www.google.com/search?q=MEDI-SPA+Saly"
+  "instagram": "https://www.instagram.com/medi_spa_saly/",
+  "adresse": {
+    "fr": "Face Totem Saly, Saly Portudal, Sénégal",
+    "en": "Opposite Totem Saly, Saly Portudal, Senegal"
+  },
+  "rue": "Face Totem Saly",
+  "ville": "Saly Portudal",
+  "horaires": {
+    "lun": [
+      "09:00",
+      "20:00"
+    ],
+    "mar": [
+      "09:00",
+      "20:00"
+    ],
+    "mer": [
+      "09:00",
+      "20:00"
+    ],
+    "jeu": [
+      "09:00",
+      "20:00"
+    ],
+    "ven": [
+      "09:00",
+      "20:00"
+    ],
+    "sam": [
+      "09:00",
+      "20:00"
+    ],
+    "dim": null
+  },
+  "noteHoraires": {
+    "fr": "Dimanche sur rendez-vous",
+    "en": "Sundays by appointment"
+  },
+  "note": 4.8,
+  "nbAvis": 71,
+  "ficheGoogle": "https://maps.google.com/?cid=2170848878231110383",
+  "lienAvisGoogle": "https://maps.google.com/?cid=2170848878231110383",
+  "requeteMaps": "MEDI-SPA Saly, Saly Portudal, Sénégal",
+  "nocturnes": []
 }

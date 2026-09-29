@@ -1,0 +1,52 @@
+{
+  "ordre": 1,
+  "categorie": "corps",
+  "vedette": true,
+  "image": "../../assets/photos/massage.jpg",
+  "imageAlt": { "fr": "Massage du dos aux huiles chaudes", "en": "Warm oil back massage" },
+  "titre": { "fr": "Massages", "en": "Massages" },
+  "accroche": {
+    "fr": "Relaxant, tonique ou à deux : une heure pour que le corps lâche enfin prise.",
+    "en": "Relaxing, invigorating or side by side: an hour for your body to finally let go."
+  },
+  "description": {
+    "fr": "Après une journée de plage, un vol long-courrier ou une semaine chargée, le massage remet le corps à zéro. Nous adaptons la pression à votre demande, de l'effleurage enveloppant au travail plus appuyé sur le dos et les épaules. Seul ou à deux, en cabine calme et climatisée, à deux pas du Totem de Saly.",
+    "en": "After a day at the beach, a long-haul flight or a busy week, a massage resets the body. We adjust the pressure to what you ask for, from gentle enveloping strokes to deeper work on the back and shoulders. On your own or as a couple, in a calm, air-conditioned room a few steps from Saly's Totem."
+  },
+  "deroule": {
+    "fr": ["Accueil et quelques questions : zones tendues, pression souhaitée.", "Installation en cabine, serviettes chaudes.", "Massage aux huiles, à votre rythme.", "Temps de repos et boisson avant de repartir."],
+    "en": ["Welcome and a few questions: tense areas, preferred pressure.", "Settle into the room with warm towels.", "Oil massage at your own pace.", "Rest and a drink before you leave."]
+  },
+  "bienfaits": {
+    "fr": ["Relâche les tensions du dos, de la nuque et des épaules", "Favorise un sommeil plus profond", "Aide à récupérer après le sport ou le voyage"],
+    "en": ["Releases tension in the back, neck and shoulders", "Helps you sleep more deeply", "Aids recovery after sport or travel"]
+  },
+  "tarifs": [
+    { "duree": "30 min", "libelle": { "fr": "Dos & épaules", "en": "Back & shoulders" }, "prix": 12000 },
+    { "duree": "60 min", "libelle": { "fr": "Relaxant", "en": "Relaxing" }, "prix": 20000 },
+    { "duree": "90 min", "libelle": { "fr": "Relaxant", "en": "Relaxing" }, "prix": 28000 },
+    { "duree": "60 min", "libelle": { "fr": "Tonique", "en": "Invigorating" }, "prix": 22000 },
+    { "duree": "60 min", "libelle": { "fr": "Duo, côte à côte", "en": "Couple, side by side" }, "prix": 38000 }
+  ],
+  "faq": [
+    {
+      "q": { "fr": "Peut-on se faire masser à deux ?", "en": "Can we have a massage together?" },
+      "r": { "fr": "Oui, le massage duo se fait côte à côte dans la même cabine. Précisez-le simplement au moment de réserver.", "en": "Yes, the couple massage takes place side by side in the same room. Just mention it when you book." }
+    },
+    {
+      "q": { "fr": "Que faut-il prévoir ?", "en": "What should I bring?" },
+      "r": { "fr": "Rien : serviettes et sous-vêtements jetables sont fournis. Arrivez cinq minutes en avance pour profiter pleinement du soin.", "en": "Nothing: towels and disposable underwear are provided. Arrive five minutes early to make the most of your treatment." }
+    },
+    {
+      "q": { "fr": "Est-ce possible pendant la grossesse ?", "en": "Is it possible during pregnancy?" },
+      "r": { "fr": "Dites-le-nous en réservant : nous vous indiquerons le soin adapté, ou vous conseillerons d'attendre.", "en": "Tell us when you book: we will suggest a suitable treatment or advise you to wait." }
+    }
+  ],
+  "seo": {
+    "titre": { "fr": "Massage à Saly — relaxant, tonique, duo | MEDI-SPA Saly", "en": "Massage in Saly, Senegal — relaxing, invigorating, couples | MEDI-SPA Saly" },
+    "description": {
+      "fr": "Massage relaxant, tonique ou en duo à Saly Portudal, face au Totem. Noté 4,8/5 sur Google. Réservation en 1 minute sur WhatsApp.",
+      "en": "Relaxing, invigorating or couples massage in Saly Portudal, opposite the Totem. Rated 4.8/5 on Google. Book in one minute on WhatsApp."
+    }
+  }
+}
