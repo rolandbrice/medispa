@@ -165,3 +165,67 @@ site/src/
 
 ## 11. Hors périmètre (phase 2)
 Paiement en ligne intégré, calendrier temps réel, rappels automatiques J-1, programme fidélité, admin CMS, déploiement. Le déploiement sera préparé mais ne sera fait qu'avec ton accord et ton compte Cloudflare.
+
+---
+
+## Révision 1 — 29/09/2026 : direction « Indigo » et règles de texte
+
+Cette révision **remplace le §3** (direction artistique) et **modifie le contenu de l'accueil (§4)**, après le retour du client : la première version faisait « générique IA », avec Cormorant + Jost, du beige et de l'or, et un texte qui répétait les infos. Parmi deux maquettes rendues (`maquettes/`), le client a choisi la direction B, « Indigo ».
+
+### R1. Direction artistique
+
+**Couleurs** (contrastes vérifiés, tous ≥ AA)
+
+| Jeton | Valeur | Usage |
+|---|---|---|
+| `indigo` | `#1C2657` | Blocs pleins (hero, nocturnes, pied de page) et texte principal sur blanc (14,3) |
+| `indigo-trait` | `#37437F` | Filets sur fond indigo |
+| `indigo-doux` | `#4B5585` | Texte secondaire sur blanc (7,2) et sur brume (6,1) |
+| `brume` | `#E9ECF4` | Filets et fonds secondaires sur blanc |
+| `blanc` | `#FFFFFF` | Fond principal |
+| `safran` | `#E2A72E` | Accent : boutons principaux (texte indigo, 6,7), titre du hero sur indigo |
+
+**Autres choix**
+- **Typographies** : **Young Serif** pour les titres (une seule graisse) et **Hanken Grotesk** pour le texte (400, 500, 600). Les deux sont auto-hébergées (`@fontsource`).
+- **Motif** : le sablier de l'affiche, c'est-à-dire deux demi-disques de photo. Il est utilisé **une seule fois**, dans le hero, avec le titre à la taille du sablier. Chaque fiche soin a une seule photo en demi-disque. Aucun autre masque décoratif.
+- **Mise en page** : hero centré et symétrique. Les contenus sont alignés à gauche dans une colonne d'environ 900 px. Beaucoup de blanc, alternance de blocs indigo et de blocs blancs.
+- **Boutons** : en pilule, en minuscules, un verbe et un objet, sans flèche.
+- **Mouvement** : aucune apparition au scroll. Seules les actions de l'utilisateur animent quelque chose (ouvrir, sélectionner).
+
+### R2. Règles de texte (valables pour tout le site)
+
+1. **Formes interdites** :
+   - un surtitre en capitales au-dessus d'un titre ;
+   - des infos enchaînées par des points médians ;
+   - une flèche en fin de bouton ;
+   - un mot mis en valeur (italique ou couleur) dans un titre ;
+   - des rangées d'étoiles ;
+   - un gros chiffre avec un petit label.
+2. **Une info, un endroit** :
+   - la note Google apparaît une fois dans le hero, puis la section avis cite les vrais avis sans répéter le chiffre ;
+   - l'adresse apparaît dans la section contact et le pied de page, pas ailleurs.
+3. **Horaires en une phrase** : « Du lundi au samedi, de 9 h à 20 h. Le dimanche sur rendez-vous. »
+4. **Uniquement des faits vérifiables** : soins, prix, lieu, horaires, avis réels. On supprime les affirmations sur l'hygiène ou l'équipe (« équipe attentive », « c'est d'abord l'hygiène »).
+5. **Soins** : une ligne descriptive factuelle, un déroulé concret, des prix. La description longue est ramenée à deux phrases au maximum.
+6. **Boutons nommés par l'action** : « Réserver un soin », « Voir les soins et les tarifs », « Commander sur WhatsApp », « Demander les prochaines dates ».
+
+### R3. Accueil révisé (remplace la composition du §4)
+
+1. **Hero indigo en sablier** : titre « Massages, hammam et kiné à Saly », ligne adresse + horaires, deux boutons, note Google.
+2. **Soins** : menu typographique des 7 soins (nom, une ligne, prix « dès … »).
+3. **Rituels** : trois forfaits (nom, durée, contenu, prix), sans badge.
+4. **Nocturnes** : bande indigo, une phrase et un bouton WhatsApp. Les dates n'apparaissent que si une nocturne à venir est saisie.
+5. **Avis** : les avis Google recopiés mot pour mot, en grand, avec le prénom et le mois. Un lien vers tous les avis.
+6. **Carte cadeau** : une phrase, le visuel de la carte (indigo et safran) et un bouton.
+7. **Contact** : photo réelle de la façade, pour reconnaître le lieu en arrivant. Adresse, horaires en une ligne, téléphone, WhatsApp, e-mail, carte au clic.
+
+**Supprimés** : le bandeau de réassurance, la section « Le lieu » (affirmations invérifiables) et le badge circulaire de note.
+
+### R4. Impact sur le plan
+
+- **Inchangés** : `src/lib/` et ses tests, le modèle de contenu, les routes, les scripts de réservation et de carte cadeau (logique), `verifier-dist.mjs`.
+- **À refaire selon R1 à R3** :
+  - les jetons et les polices (`global.css`, paquets fontsource) ;
+  - les composants visuels (Titre, CarteSoin, sections de l'accueil, fiches, liste, réservation, carte cadeau), en suivant les maquettes plutôt que le code visuel du plan ;
+  - `ui.ts` (textes raccourcis) ;
+  - les champs `accroche` et `description` des soins (raccourcis).

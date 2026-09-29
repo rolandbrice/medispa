@@ -33,7 +33,7 @@ def sauver(im: Image.Image, nom: str) -> None:
 # Les coins couleur taupe restent hors champ une fois masqués par .arche-inverse / .arche.
 affiche = Image.open(SRC / 'affiche-nocturnes.jpg')
 sauver(etalonner(affiche.crop((654, 405, 1392, 720))), 'cabine-haut.jpg')
-sauver(etalonner(affiche.crop((654, 765, 1394, 1112))), 'cabine-arche.jpg')
+sauver(etalonner(affiche.crop((654, 765, 1394, 1105))), 'cabine-arche.jpg')
 sauver(etalonner(Image.open(SRC / 'facade.jpg')), 'facade.jpg')
 
 for f in sorted(SRC.glob('*.jpg')):

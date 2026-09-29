@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction A — La façade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --chaux: #F5F5F0;
+    --noir: #000;
+    --beton: #D6D6CE;
+    --gris: #4F4F4A;
+    --bougainvillee: #B3246B;
+    --meneau: 2px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--chaux); color: var(--noir); font-family: Archivo, system-ui, sans-serif; font-size: 17px; line-height: 1.55; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .large { font-stretch: 125%; }
+  .page { max-width: 1440px; margin: 0 auto; border-inline: var(--meneau) solid var(--noir); }
+
+  .demo { background: var(--noir); color: var(--chaux); font-size: 13px; padding: 6px 20px; }
+
+  header { display: flex; align-items: stretch; border-bottom: var(--meneau) solid var(--noir); }
+  .marque { display: flex; align-items: center; padding: 18px 24px; border-right: var(--meneau) solid var(--noir); font-stretch: 125%; font-weight: 800; font-size: 22px; letter-spacing: -.01em; }
+  nav { display: flex; flex: 1; }
+  nav a { display: flex; align-items: center; padding: 0 22px; font-size: 15px; border-right: var(--meneau) solid var(--noir); }
+  nav a:hover { background: var(--noir); color: var(--chaux); }
+  .langue { margin-left: auto; border-left: var(--meneau) solid var(--noir); border-right: 0; }
+  .reserver { display: flex; align-items: center; padding: 0 28px; background: var(--bougainvillee); color: #fff; font-weight: 600; font-size: 15px; }
+
+  .hero { display: grid; grid-template-columns: 5fr 7fr; border-bottom: var(--meneau) solid var(--noir); }
+  .hero-texte { padding: 72px 48px 48px; display: flex; flex-direction: column; border-right: var(--meneau) solid var(--noir); }
+  h1 { font-stretch: 125%; font-weight: 700; font-size: clamp(2.6rem, 4.6vw, 4.6rem); line-height: .98; letter-spacing: -.035em; }
+  .hero-texte p { margin-top: 28px; max-width: 30ch; color: var(--gris); font-size: 19px; }
+  .actions { margin-top: auto; padding-top: 48px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+  .bouton { display: inline-block; background: var(--noir); color: var(--chaux); padding: 16px 28px; font-weight: 600; }
+  .bouton:hover { background: var(--bougainvillee); }
+  .lien { border-bottom: var(--meneau) solid currentColor; padding-bottom: 2px; font-weight: 500; }
+  .note { margin-top: 28px; font-size: 14px; color: var(--gris); }
+
+  /* La photo vue à travers une fenêtre à meneaux d'acier, comme celles de la façade */
+  .fenetre { position: relative; min-height: 640px; }
+  .fenetre::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(var(--noir), var(--noir)) 38% 100% / 10px 56% no-repeat,
+      linear-gradient(var(--noir), var(--noir)) 0 44% / 100% 10px no-repeat;
+  }
+
+  .soins { display: grid; grid-template-columns: 3fr 9fr; }
+  .soins-titre { padding: 48px; border-right: var(--meneau) solid var(--noir); }
+  h2 { font-stretch: 125%; font-weight: 700; font-size: 2.6rem; letter-spacing: -.03em; line-height: 1; }
+  .soins-titre p { margin-top: 16px; font-size: 14px; color: var(--gris); max-width: 22ch; }
+  .carreaux { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .carreau { display: flex; flex-direction: column; min-height: 220px; padding: 28px; border-right: var(--meneau) solid var(--noir); border-bottom: var(--meneau) solid var(--noir); }
+  .carreau:nth-child(3n) { border-right: 0; }
+  .carreau h3 { font-stretch: 112%; font-weight: 650; font-size: 1.45rem; letter-spacing: -.015em; line-height: 1.1; }
+  .carreau p { margin-top: 10px; color: var(--gris); }
+  .carreau .prix { margin-top: auto; padding-top: 24px; font-weight: 600; }
+  .carreau:hover { background: var(--noir); color: var(--chaux); }
+  .carreau:hover p { color: var(--beton); }
+  .carreau.rituels { background: var(--beton); }
+  .carreau.rituels:hover { background: var(--noir); }
+
+  :focus-visible { outline: 3px solid var(--bougainvillee); outline-offset: 2px; }
+
+  @media (max-width: 900px) {
+    nav a:not(.langue) { display: none; }
+    .marque { border-right: 0; font-size: 19px; padding: 14px 18px; }
+    .reserver { padding: 0 18px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-texte { padding: 40px 20px 32px; border-right: 0; border-bottom: var(--meneau) solid var(--noir); }
+    .actions { padding-top: 32px; }
+    .fenetre { min-height: 0; aspect-ratio: 4 / 5; }
+    .soins { grid-template-columns: 1fr; }
+    .soins-titre { padding: 32px 20px; border-right: 0; border-bottom: var(--meneau) solid var(--noir); }
+    .carreaux { grid-template-columns: 1fr; }
+    .carreau { min-height: 0; padding: 22px 20px; border-right: 0; }
+    .carreau .prix { padding-top: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="demo">Démo : tarifs indicatifs, à valider ensemble.</div>
+<div class="page">
+  <header>
+    <a class="marque" href="#">Medi Spa</a>
+    <nav>
+      <a href="#">Soins</a>
+      <a href="#">Rituels</a>
+      <a href="#">Carte cadeau</a>
+      <a href="#">Contact</a>
+      <a class="langue" href="#" lang="en">EN</a>
+    </nav>
+    <a class="reserver" href="#">Réserver</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-texte">
+      <h1>Massages, hammam et kiné à Saly.</h1>
+      <p>Face au Totem, à Saly Portudal. Du lundi au samedi, de 9 h à 20 h.</p>
+      <div class="actions">
+        <a class="bouton" href="#">Réserver un soin</a>
+        <a class="lien" href="#soins">Voir les soins et les tarifs</a>
+      </div>
+      <p class="note">Noté 4,8 sur 5 sur Google (71 avis).</p>
+    </div>
+    <div class="fenetre"><img src="../site/src/assets/photos/ambiance-1.jpg" alt="L'entrée de MEDI-SPA Saly"></div>
+  </section>
+
+  <section class="soins" id="soins">
+    <div class="soins-titre">
+      <h2>Soins</h2>
+      <p>Tarifs indicatifs pour la démo.</p>
+    </div>
+    <div class="carreaux">
+      <a class="carreau" href="#"><h3>Massages</h3><p>Relaxant, tonique ou en duo.</p><span class="prix">Dès 12 000 FCFA</span></a>
+      <a class="carreau" href="#"><h3>Visage et corps</h3><p>Nettoyage, éclat, hydratation, gommage.</p><span class="prix">Dès 10 000 FCFA</span></a>
+      <a class="carreau" href="#"><h3>Hammam et gommage</h3><p>Vapeur, gommage au gant, enveloppement.</p><span class="prix">Dès 8 000 FCFA</span></a>
+      <a class="carreau" href="#"><h3>Épilation</h3><p>Visage et corps, à la cire.</p><span class="prix">Dès 2 000 FCFA</span></a>
+      <a class="carreau" href="#"><h3>Kinésithérapie</h3><p>Bilan, puis séances de rééducation.</p><span class="prix">Sur devis</span></a>
+      <a class="carreau" href="#"><h3>Balnéo</h3><p>Bain bouillonnant, seul ou à deux.</p><span class="prix">Dès 10 000 FCFA</span></a>
+      <a class="carreau" href="#"><h3>Amincissement</h3><p>Programme sur mesure après un bilan offert.</p><span class="prix">Dès 20 000 FCFA</span></a>
+      <a class="carreau rituels" href="#"><h3>Rituels</h3><p>Trois forfaits de 60 à 90 minutes.</p><span class="prix">Dès 25 000 FCFA</span></a>
+      <a class="carreau" href="#"><h3>Carte cadeau</h3><p>Un montant ou un rituel à offrir.</p><span class="prix">Dès 10 000 FCFA</span></a>
+    </div>
+  </section>
+</div>
+</body>
+</html>
