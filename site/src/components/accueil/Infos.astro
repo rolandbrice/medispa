@@ -1,0 +1,61 @@
+---
+import type { Lang } from '../../lib/i18n';
+import { formaterPlage, type Jour } from '../../lib/horaires';
+import { site, telHref } from '../../lib/site';
+import { lienWhatsApp, messageInfo } from '../../lib/whatsapp';
+import { t, type Cle } from '../../i18n/ui';
+import CarteMaps from '../CarteMaps.astro';
+import Titre from '../Titre.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const _ = t(lang);
+const jours: Jour[] = ['lun', 'mar', 'mer', 'jeu', 'ven', 'sam', 'dim'];
+const itineraire = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.requeteMaps)}`;
+---
+<section id="infos" class="scroll-mt-20 bg-taupe/50 py-20 md:py-28">
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 md:px-8 lg:grid-cols-12">
+    <div class="lg:col-span-5">
+      <Titre fond="taupe" surtitre={_('infos.surtitre')} titre={_('infos.titre')} />
+      <div class="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-1">
+        <div class="reveal">
+          <h3 class="surtitre font-sans text-brun">{_('infos.horaires')}</h3>
+          <table class="mt-3 w-full text-[15px]">
+            <tbody>
+              {jours.map((j) => {
+                const plage = site.horaires[j];
+                return (
+                  <tr class="border-b border-encre/10">
+                    <th scope="row" class="py-2 text-left font-normal">{_(`jour.${j}` as Cle)}</th>
+                    <td class="py-2 text-right">{plage ? formaterPlage(plage, lang) : _('infos.ferme')}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <p class="mt-3 text-sm text-brun">{site.noteHoraires[lang]}</p>
+        </div>
+        <div class="reveal space-y-8">
+          <div>
+            <h3 class="surtitre font-sans text-brun">{_('infos.adresse')}</h3>
+            <p class="mt-3 text-[15px]">{site.adresse[lang]}</p>
+            <a href={itineraire} target="_blank" rel="noopener" class="lien-trait mt-2 inline-block text-sm">{_('infos.itineraire')}&nbsp;<span class="fleche" aria-hidden="true">→</span></a>
+          </div>
+          <div>
+            <h3 class="surtitre font-sans text-brun">{_('contact.titre')}</h3>
+            <ul class="mt-3 space-y-1.5 text-[15px]">
+              <li><a class="lien-trait" href={telHref()}>{site.telephone}</a></li>
+              <li><a class="lien-trait" href={lienWhatsApp(site.whatsapp, messageInfo(undefined, lang))} target="_blank" rel="noopener">WhatsApp</a></li>
+              <li><a class="lien-trait" href={`mailto:${site.email}`}>{site.email}</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="surtitre font-sans text-brun">{_('infos.paiement')}</h3>
+            <p class="mt-3 text-[15px]">{_('infos.paiementTexte')}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal lg:col-span-7"><CarteMaps lang={lang} /></div>
+  </div>
+</section>

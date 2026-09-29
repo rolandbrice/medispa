@@ -1,0 +1,29 @@
+---
+import type { Lang } from '../../lib/i18n';
+import { t } from '../../i18n/ui';
+import Base from '../../layouts/Base.astro';
+import Hero from '../accueil/Hero.astro';
+import Preuves from '../accueil/Preuves.astro';
+import SoinsPhares from '../accueil/SoinsPhares.astro';
+import Nocturnes from '../accueil/Nocturnes.astro';
+import Lieu from '../accueil/Lieu.astro';
+import Avis from '../accueil/Avis.astro';
+import Infos from '../accueil/Infos.astro';
+import Rituels from '../Rituels.astro';
+import TeaserCadeau from '../TeaserCadeau.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const _ = t(lang);
+---
+<Base lang={lang} page="accueil" titre={_('meta.accueil.titre')} description={_('meta.accueil.description')}>
+  <Hero lang={lang} />
+  <Preuves lang={lang} />
+  <SoinsPhares lang={lang} />
+  <Rituels lang={lang} />
+  <Nocturnes lang={lang} />
+  <Lieu lang={lang} />
+  <Avis lang={lang} />
+  <TeaserCadeau lang={lang} />
+  <Infos lang={lang} />
+</Base>

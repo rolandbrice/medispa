@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import type { Lang } from '../../lib/i18n';
+import { formaterMois } from '../../lib/horaires';
+import { site } from '../../lib/site';
+import { t } from '../../i18n/ui';
+import Titre from '../Titre.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const _ = t(lang);
+// Uniquement des avis Google recopiés mot pour mot (voir content.config.ts).
+const avis = (await getCollection('avis')).sort((a, b) => b.data.date.localeCompare(a.data.date)).slice(0, 4);
+const note = new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-GB').format(site.note);
+const guillemets = (l: Lang, s: string) => (l === 'fr' ? `« ${s} »` : `“${s}”`);
+---
+<section class="border-t border-encre/10 py-20 md:py-28">
+  <div class:list={['mx-auto grid max-w-7xl gap-14 px-5 md:px-8', avis.length && 'lg:grid-cols-12']}>
+    <div class:list={[avis.length ? 'lg:col-span-4' : 'text-center']}>
+      <Titre surtitre={_('avis.source')} titre={_('avis.titre')} centre={!avis.length} />
+      <p class:list={['reveal mt-8 flex items-end gap-3', !avis.length && 'justify-center']}>
+        <span class="font-serif text-7xl leading-none">{note}</span>
+        <span class="pb-2 text-brun">/ 5 · {site.nbAvis} {_('avis.avis')}</span>
+      </p>
+      <div class:list={['reveal mt-8 flex flex-wrap gap-3', !avis.length && 'justify-center']}>
+        <a href={site.ficheGoogle} target="_blank" rel="noopener" class="bg-encre px-6 py-3.5 text-[12px] uppercase tracking-[.18em] text-creme transition-colors hover:bg-or-profond">{_('avis.voir')}&nbsp;<span class="fleche" aria-hidden="true">→</span></a>
+        <a href={site.lienAvisGoogle} target="_blank" rel="noopener" class="border border-encre/25 px-6 py-3.5 text-[12px] uppercase tracking-[.18em] transition-colors hover:border-encre">{_('avis.laisser')}</a>
+      </div>
+    </div>
+    {avis.length > 0 && (
+      <ul class="grid gap-5 sm:grid-cols-2 lg:col-span-8">
+        {avis.map((a, i) => (
+          <li class="reveal flex flex-col bg-white/60 p-7 ring-1 ring-encre/10" style={`--d:${i * 0.07}s`}>
+            <p class="tracking-[.15em] text-or-vif" role="img" aria-label={`${a.data.note}/5`}>{'★'.repeat(a.data.note)}</p>
+            <blockquote class="mt-4 flex-1 font-serif text-xl italic leading-snug" lang={a.data.langue}>{guillemets(a.data.langue, a.data.texte)}</blockquote>
+            <p class="mt-6 text-sm text-brun">{a.data.auteur} · {formaterMois(a.data.date, lang)} · {_('avis.source')}</p>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</section>

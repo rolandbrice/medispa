@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Lang } from '../lib/i18n';
+import { aPartirDe } from '../lib/prix';
+import { chemin } from '../lib/routes';
+import { t, type Cle } from '../i18n/ui';
+import Photo from './Photo.astro';
+
+interface Props { soin: CollectionEntry<'soins'>; lang: Lang; titre?: 'h2' | 'h3' }
+const { soin, lang, titre = 'h3' } = Astro.props;
+const _ = t(lang);
+const d = soin.data;
+const Balise = titre;
+---
+<a href={chemin('soin', lang, soin.id)} class="group block">
+  <Photo src={d.image} alt={d.imageAlt[lang]} forme="arche" sizes="(min-width: 1024px) 380px, (min-width: 640px) 45vw, 100vw" class="aspect-[4/5] bg-taupe" imgClass="transition-transform duration-[1.2s] ease-[var(--ease-doux)] group-hover:scale-105" />
+  <p class="surtitre mt-6 text-or-profond">{_(`cat.${d.categorie}` as Cle)}</p>
+  <Balise class="mt-2 text-3xl leading-tight">{d.titre[lang]}</Balise>
+  <p class="mt-2 leading-relaxed text-brun">{d.accroche[lang]}</p>
+  <p class="mt-5 flex items-center justify-between border-t border-encre/15 pt-4 text-sm">
+    <span>{aPartirDe(d.tarifs, lang)}</span>
+    <span class="fleche text-or-vif" aria-hidden="true">→</span>
+  </p>
+</a>

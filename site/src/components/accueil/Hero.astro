@@ -1,0 +1,40 @@
+---
+import type { Lang } from '../../lib/i18n';
+import { chemin } from '../../lib/routes';
+import { site } from '../../lib/site';
+import { t } from '../../i18n/ui';
+import Photo from '../Photo.astro';
+import hero from '../../assets/photos/hero.jpg';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const _ = t(lang);
+const note = new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-GB').format(site.note);
+---
+<section class="relative overflow-hidden">
+  <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 pb-20 pt-10 md:px-8 lg:grid-cols-12 lg:gap-8 lg:pb-28 lg:pt-16">
+    <div class="lg:col-span-6">
+      <p class="surtitre text-or-profond">{_('hero.surtitre')}</p>
+      <h1 class="mt-5 text-[2.9rem] leading-[1] sm:text-6xl lg:text-[5.4rem]">
+        <span class="block">{_('hero.titre1')}</span>
+        <em class="block text-or-profond [text-wrap:balance]">{_('hero.titre2')}</em>
+      </h1>
+      <p class="mt-7 max-w-md text-lg leading-relaxed text-brun">{_('hero.texte')}</p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href={chemin('reserver', lang)} class="bg-encre px-8 py-4 text-[12px] uppercase tracking-[.2em] text-creme transition-colors hover:bg-or-profond">{_('cta.reserver')}&nbsp;<span class="fleche" aria-hidden="true">→</span></a>
+        <a href={chemin('soins', lang)} class="border border-encre/25 px-8 py-4 text-[12px] uppercase tracking-[.2em] transition-colors hover:border-encre hover:bg-encre hover:text-creme">{_('hero.cta2')}</a>
+      </div>
+      <a href={site.ficheGoogle} target="_blank" rel="noopener" class="mt-10 inline-flex items-center gap-3 text-sm text-brun hover:text-encre">
+        <span class="tracking-[.15em] text-or-vif" aria-hidden="true">★★★★★</span>
+        <span><strong class="font-medium text-encre">{note}/5</strong> {_('avis.surGoogle')} · {site.nbAvis} {_('avis.avis')}</span>
+      </a>
+    </div>
+    <div class="relative lg:col-span-6">
+      <Photo src={hero} alt={_('photo.hero')} forme="arche" prioritaire sizes="(min-width: 1024px) 560px, 100vw" class="mx-auto aspect-[5/6] w-full max-w-[560px] bg-taupe" />
+      <div class="absolute -bottom-7 left-3 flex h-32 w-32 flex-col items-center justify-center rounded-full bg-taupe text-center shadow-xl ring-8 ring-creme sm:left-10 lg:-left-4">
+        <span class="font-serif text-4xl leading-none">{note}</span>
+        <span class="mt-1.5 text-[10px] uppercase tracking-[.2em] text-brun">Google</span>
+      </div>
+    </div>
+  </div>
+</section>
