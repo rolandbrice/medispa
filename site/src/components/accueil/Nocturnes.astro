@@ -1,5 +1,6 @@
 ---
 import type { Lang } from '../../lib/i18n';
+import { formaterPlage } from '../../lib/horaires';
 import { nocturnesAVenir } from '../../lib/nocturnes';
 import { site } from '../../lib/site';
 import { lienWhatsApp, messageInfo } from '../../lib/whatsapp';
@@ -8,25 +9,27 @@ import { t } from '../../i18n/ui';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const _ = t(lang);
+// Évalué au build ; scripts/nocturnes.ts retire les dates passées et ajuste le bouton côté navigateur.
 const avenir = nocturnesAVenir(site.nocturnes, new Date());
 ---
 <section class="bg-profond px-5 py-20 text-center text-white md:py-24">
   <h2 class="text-5xl text-eau md:text-6xl">{_('nocturnes.titre')}</h2>
   <p class="mx-auto mt-5 max-w-[44ch] text-lg text-ecume">{_('nocturnes.texte')}</p>
   {avenir.length > 0 && (
-    <div class="mx-auto mt-8 max-w-md">
+    <div data-nocturnes-liste class="mx-auto mt-8 max-w-md">
       <p class="font-semibold">{_('nocturnes.prochaines')}</p>
       <ul class="mt-3 divide-y divide-profond-trait border-y border-profond-trait">
         {avenir.map((n) => (
           <li data-fin={n.fin} class="flex items-baseline justify-between gap-4 py-3">
             <span class="font-serif text-xl">{n.quand[lang]}</span>
-            <span class="text-ecume">{n.heures}</span>
+            <span class="text-ecume">{formaterPlage(n.heures, lang)}</span>
           </li>
         ))}
       </ul>
     </div>
   )}
-  <a href={lienWhatsApp(site.whatsapp, messageInfo(_('nocturnes.sujet'), lang))} target="_blank" rel="noopener" class="bouton-clair mt-8">
-    {avenir.length ? _('nocturnes.reserver') : _('nocturnes.cta')}
+  <a data-nocturnes-cta href={lienWhatsApp(site.whatsapp, messageInfo(_('nocturnes.sujet'), lang))} target="_blank" rel="noopener" class="bouton-clair mt-8">
+    <span data-si="avenir" hidden={avenir.length === 0}>{_('nocturnes.reserver')}</span>
+    <span data-si="aucune" hidden={avenir.length > 0}>{_('nocturnes.cta')}</span>
   </a>
 </section>

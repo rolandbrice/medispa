@@ -28,7 +28,7 @@ export const schemaSite = z.object({
   requeteMaps: z.string().min(1),
   nocturnes: z.array(
     z
-      .object({ debut: date, fin: date, heures: z.string().min(1), quand: texte, titre: texte, texte: texte })
+      .object({ debut: date, fin: date, heures: z.tuple([heure, heure]), quand: texte })
       .refine((n) => n.debut <= n.fin, 'la fin d’une nocturne précède son début'),
   ),
 });

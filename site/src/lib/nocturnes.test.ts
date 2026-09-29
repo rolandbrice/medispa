@@ -1,9 +1,24 @@
 import { describe, expect, it } from 'vitest';
-import { estPassee, nocturnesAVenir, type Nocturne } from './nocturnes';
+import { estPassee, nocturnesAVenir, texteBanniere, type Nocturne } from './nocturnes';
 
 const t = { fr: 'x', en: 'x' };
-const n = (debut: string, fin: string): Nocturne => ({ debut, fin, heures: '18h–21h', quand: t, titre: t, texte: t });
+const n = (debut: string, fin: string): Nocturne => ({ debut, fin, heures: ['18:00', '21:00'], quand: t });
 const midi = (jour: string) => new Date(jour + 'T12:00:00Z');
+
+describe('texteBanniere', () => {
+  const nocturne: Nocturne = {
+    debut: '2026-10-09',
+    fin: '2026-10-10',
+    heures: ['18:00', '21:00'],
+    quand: { fr: 'vendredi 9 et samedi 10 octobre', en: 'Friday 9 and Saturday 10 October' },
+  };
+  it('rédige la bannière en français, heures à la française', () => {
+    expect(texteBanniere(nocturne, 'fr')).toBe('Nocturne : vendredi 9 et samedi 10 octobre, 18 h – 21 h.');
+  });
+  it('rédige la bannière en anglais, sans typographie ni heures françaises', () => {
+    expect(texteBanniere(nocturne, 'en')).toBe('Late night: Friday 9 and Saturday 10 October, 6 pm – 9 pm.');
+  });
+});
 
 describe('estPassee', () => {
   it('le dernier jour de l’événement n’est pas encore passé', () => {

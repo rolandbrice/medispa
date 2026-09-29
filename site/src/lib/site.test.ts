@@ -12,9 +12,16 @@ describe('site.json', () => {
   it('refuse une plage horaire mal écrite', () => {
     expect(() => schemaSite.parse({ ...brut, horaires: { ...brut.horaires, lun: ['9h', '20h'] } })).toThrow();
   });
+  it('accepte une nocturne bien formée', () => {
+    const nocturne = { debut: '2026-12-19', fin: '2026-12-20', heures: ['18:00', '21:00'], quand: { fr: 'x', en: 'x' } };
+    expect(() => schemaSite.parse({ ...brut, nocturnes: [nocturne] })).not.toThrow();
+  });
   it('refuse une nocturne dont la fin précède le début', () => {
-    const t = { fr: 'x', en: 'x' };
-    const nocturne = { debut: '2026-12-20', fin: '2026-12-19', heures: '18h–21h', quand: t, titre: t, texte: t };
+    const nocturne = { debut: '2026-12-20', fin: '2026-12-19', heures: ['18:00', '21:00'], quand: { fr: 'x', en: 'x' } };
+    expect(() => schemaSite.parse({ ...brut, nocturnes: [nocturne] })).toThrow();
+  });
+  it('refuse des heures de nocturne en texte libre (elles doivent pouvoir se traduire)', () => {
+    const nocturne = { debut: '2026-12-19', fin: '2026-12-20', heures: '18h–21h', quand: { fr: 'x', en: 'x' } };
     expect(() => schemaSite.parse({ ...brut, nocturnes: [nocturne] })).toThrow();
   });
   it('fabrique un lien tel: sans espaces', () => {
