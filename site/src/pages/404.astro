@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { ui } from '../i18n/ui';
+import { chemin } from '../lib/routes';
+---
+<Base lang="fr" page="404" titre="Page introuvable : MEDI-SPA Saly" description="Cette page n'existe pas ou plus. Retrouvez nos massages, hammam, balnéo et soins à Saly Portudal.">
+  <section class="bg-eau">
+    <div class="mx-auto flex min-h-[60vh] max-w-3xl flex-col items-center justify-center px-5 py-24 text-center">
+      <div class="demi-bas h-20 w-40 bg-profond" aria-hidden="true"></div>
+      <h1 class="mt-10 text-5xl md:text-6xl">{ui.fr['e404.titre']}</h1>
+      <p class="mt-5 text-lg text-profond-trait">{ui.fr['e404.texte']}</p>
+      <p class="mt-2 text-profond-trait" lang="en">{ui.en['e404.titre']} {ui.en['e404.texte']}</p>
+      <div class="mt-10 flex flex-wrap justify-center gap-3">
+        <a href={chemin('accueil', 'fr')} class="bouton">{ui.fr['e404.cta']}</a>
+        <a href={chemin('accueil', 'en')} lang="en" class="bouton-clair border border-profond/25">{ui.en['e404.cta']}</a>
+      </div>
+    </div>
+  </section>
+</Base>
