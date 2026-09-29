@@ -1,0 +1,95 @@
+---
+import { getCollection } from 'astro:content';
+import type { Lang } from '../../lib/i18n';
+import { MONTANTS_PROPOSES } from '../../lib/cadeau';
+import { formaterPrix } from '../../lib/prix';
+import { chemin } from '../../lib/routes';
+import { site } from '../../lib/site';
+import { t } from '../../i18n/ui';
+import Base from '../../layouts/Base.astro';
+import CarteCadeauVisuel from '../CarteCadeauVisuel.astro';
+import FilAriane from '../FilAriane.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const _ = t(lang);
+const rituels = (await getCollection('rituels')).sort((a, b) => a.data.ordre - b.data.ordre);
+const libelleRituel = (r: (typeof rituels)[number]) => `${r.data.nom[lang]} (${r.data.duree.replace(/ /g, ' ')})`;
+const donnees = {
+  lang,
+  whatsapp: site.whatsapp,
+  rituels: rituels.map((r) => ({ id: r.id, libelle: libelleRituel(r) })),
+  textes: {
+    vide: '—',
+    erreurs: {
+      vide: _('cadeau.erreur.vide'),
+      invalide: _('cadeau.erreur.invalide'),
+      'trop-bas': _('cadeau.erreur.trop-bas'),
+      'trop-haut': _('cadeau.erreur.trop-haut'),
+      de: _('cadeau.erreur.de'),
+      pour: _('cadeau.erreur.pour'),
+    },
+  },
+};
+const etapes = [
+  { nom: _('fil.accueil'), href: chemin('accueil', lang) },
+  { nom: _('nav.cadeau'), href: chemin('carte-cadeau', lang) },
+];
+const champ = 'mt-2 w-full rounded-2xl border border-profond/25 bg-white px-4 py-3.5 text-lg outline-none transition-colors focus:border-profond';
+const etiquette = 'block font-semibold';
+const defaut = formaterPrix(MONTANTS_PROPOSES[1], lang);
+---
+<Base lang={lang} page="carte-cadeau" titre={_('meta.cadeau.titre')} description={_('meta.cadeau.description')}>
+  <section class="bg-eau">
+    <div class="mx-auto max-w-6xl px-5 pb-12 pt-8 md:px-8 md:pb-14 md:pt-10">
+      <FilAriane lang={lang} etapes={etapes} />
+      <h1 class="mt-8 text-5xl md:text-7xl">{_('cadeau.titre')}</h1>
+      <p class="mt-4 max-w-[56ch] text-lg text-profond-trait">{_('cadeau.intro')}</p>
+    </div>
+  </section>
+
+  <section class="mx-auto grid max-w-6xl gap-14 px-5 pb-24 pt-12 md:px-8 lg:grid-cols-12">
+    <form id="form-cadeau" novalidate class="space-y-10 lg:col-span-6">
+      <fieldset>
+        <legend class="font-serif text-3xl">{_('cadeau.choix')}</legend>
+        <div class="mt-5 grid grid-cols-2 gap-2">
+          <label class="pastille"><input type="radio" name="type" value="montant" class="sr-only" checked />{_('cadeau.montant')}</label>
+          <label class="pastille"><input type="radio" name="type" value="rituel" class="sr-only" />{_('cadeau.rituel')}</label>
+        </div>
+        <div data-groupe="montant" class="mt-4 flex flex-wrap gap-2">
+          {MONTANTS_PROPOSES.map((m, i) => <label class="pastille"><input type="radio" name="montant" value={String(m)} class="sr-only" checked={i === 1} />{formaterPrix(m, lang)}</label>)}
+          <label class="pastille"><input type="radio" name="montant" value="libre" class="sr-only" />{_('cadeau.libre')}</label>
+        </div>
+        <div data-groupe="libre" hidden class="mt-4">
+          <label for="montant-libre" class="sr-only">{_('cadeau.libre')}</label>
+          <input id="montant-libre" inputmode="numeric" autocomplete="off" placeholder={_('cadeau.librePlaceholder')} class={champ} />
+        </div>
+        <div data-groupe="rituel" hidden class="mt-4 flex flex-wrap gap-2">
+          {rituels.map((r, i) => <label class="pastille"><input type="radio" name="rituel" value={r.id} class="sr-only" checked={i === 0} />{libelleRituel(r)}</label>)}
+        </div>
+      </fieldset>
+      <div class="grid gap-6 sm:grid-cols-2">
+        <div><label for="de" class={etiquette}>{_('cadeau.de')}</label><input id="de" maxlength="40" autocomplete="given-name" class={champ} /></div>
+        <div><label for="pour" class={etiquette}>{_('cadeau.pour')}</label><input id="pour" maxlength="40" autocomplete="off" class={champ} /></div>
+      </div>
+      <div><label for="mot" class={etiquette}>{_('cadeau.mot')}</label><textarea id="mot" rows="3" maxlength="140" class={champ}></textarea></div>
+      <p id="erreur-cadeau" role="alert" class="min-h-[1.5em] font-semibold text-profond"></p>
+      <button type="submit" class="bouton w-full">{_('cadeau.envoyer')}</button>
+      <p class="text-doux">{_('cadeau.paiement')}</p>
+    </form>
+
+    <div class="lg:col-span-6">
+      <div class="lg:sticky lg:top-6">
+        <p class="mb-4 font-semibold">{_('cadeau.apercu')}</p>
+        <div id="apercu" aria-live="polite">
+          <CarteCadeauVisuel lang={lang} offre={defaut} pour="—" de="—" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <script id="donnees-cadeau" type="application/json" set:html={JSON.stringify(donnees)} />
+</Base>
+
+<script>
+  import '../../scripts/carte-cadeau';
+</script>
