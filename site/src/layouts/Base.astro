@@ -1,74 +1,74 @@
 ---
 import '../styles/global.css';
-import site from '../data/site.json';
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import type { Lang } from '../lib/i18n';
+import { chemin, type Page } from '../lib/routes';
+import { site } from '../lib/site';
+import { t } from '../i18n/ui';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BarreMobile from '../components/BarreMobile.astro';
+import BandeauDemo from '../components/BandeauDemo.astro';
+import BanniereNocturne from '../components/BanniereNocturne.astro';
+import photoParDefaut from '../assets/photos/hero.jpg';
 
 interface Props {
-  title: string;
+  lang: Lang;
+  titre: string;
   description: string;
-  lang?: string;
-  path?: string;
+  page: Page | '404';
+  slug?: string;
+  schemas?: object[];
+  image?: ImageMetadata;
 }
-const { title, description, lang = 'fr', path = '/' } = Astro.props;
-const wa = (msg: string) => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(msg)}`;
+const { lang, titre, description, page, slug, schemas = [], image = photoParDefaut } = Astro.props;
+const _ = t(lang);
+const base = Astro.site!;
+const estPage = page !== '404';
+const url = (l: Lang) => new URL(chemin(page as Page, l, slug), base).href;
+const og = await getImage({ src: image, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
 ---
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang}>
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  <link rel="canonical" href={`https://medi-spa-saly.sn${path}`} />
-  {lang === 'fr'
-    ? <link rel="alternate" hreflang="en" href="https://medi-spa-saly.sn/en/" />
-    : <link rel="alternate" hreflang="fr" href="https://medi-spa-saly.sn/" />}
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://medi-spa-saly.sn/images/hero-massage.jpg" />
-  <meta name="theme-color" content="#F6F1E7" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BeautySalon",
-    "name": "MEDI-SPA Saly",
-    "image": "https://medi-spa-saly.sn/images/hero-massage.jpg",
-    "address": { "@type": "PostalAddress", "addressLocality": "Saly Portudal", "addressCountry": "SN" },
-    "telephone": site.telephone,
-    "email": site.email,
-    "url": "https://medi-spa-saly.sn",
-    "priceRange": "FCFA",
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "70" },
-    "openingHours": "Mo-Sa 09:00-20:00",
-    "sameAs": [site.instagram, site.ficheGoogle]
-  })} />
-</head>
-<body class="bg-creme text-encre font-sans antialiased">
-  <a href="#contenu" class="skip-link">Aller au contenu</a>
-  <main id="contenu">
-    <slot />
-  </main>
-
-  <!-- Barre sticky mobile : appeler / WhatsApp -->
-  <nav aria-label="Contact rapide" class="fixed bottom-0 inset-x-0 z-50 md:hidden grid grid-cols-2 border-t border-encre/10 bg-creme/95 backdrop-blur">
-    <a href={`tel:${site.telephone.replace(/\s/g, '')}`} class="text-center py-3.5 text-xs tracking-[.25em] uppercase">Appeler</a>
-    <a href={wa('Bonjour MEDI-SPA Saly, je souhaite réserver.')} target="_blank" rel="noopener" class="text-center py-3.5 text-xs tracking-[.25em] uppercase bg-encre text-sable">WhatsApp</a>
-  </nav>
-  <div class="h-12 md:hidden"></div>
-
-  <script>
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-    const nav = document.getElementById('nav');
-    addEventListener('scroll', () => {
-      nav?.classList.toggle('shadow-[0_10px_30px_-15px_rgba(30,42,38,.25)]', scrollY > 12);
-    }, { passive: true });
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{titre}</title>
+    <meta name="description" content={description} />
+    {site.demo && <meta name="robots" content="noindex, nofollow" />}
+    {estPage && (
+      <>
+        <link rel="canonical" href={url(lang)} />
+        <link rel="alternate" hreflang="fr" href={url('fr')} />
+        <link rel="alternate" hreflang="en" href={url('en')} />
+        <link rel="alternate" hreflang="x-default" href={url('fr')} />
+        <meta property="og:url" content={url(lang)} />
+      </>
+    )}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.nom} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_GB'} />
+    <meta property="og:title" content={titre} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(og.src, base).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#F7F1E8" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline>document.documentElement.classList.add('js')</script>
+    {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body>
+    <a href="#contenu" class="skip-link">{_('skip')}</a>
+    {site.demo && <BandeauDemo lang={lang} />}
+    <BanniereNocturne lang={lang} />
+    <Header lang={lang} page={page} slug={slug} />
+    <main id="contenu"><slot /></main>
+    <Footer lang={lang} page={page} slug={slug} />
+    <BarreMobile lang={lang} />
+    <script>
+      import '../scripts/reveal';
+      import '../scripts/nocturnes';
+    </script>
+  </body>
 </html>

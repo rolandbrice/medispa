@@ -60,3 +60,26 @@
   .js .reveal { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
+
+summary::-webkit-details-marker { display: none; }
+
+/* Icône du menu mobile : deux traits qui se croisent à l'ouverture */
+.menu-icone { position: relative; width: 22px; height: 12px; }
+.menu-icone::before, .menu-icone::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 1.5px; background: currentColor;
+  transition: transform .3s var(--ease-doux), top .3s var(--ease-doux);
+}
+.menu-icone::before { top: 2px; }
+.menu-icone::after { top: 9px; }
+.menu[open] .menu-icone::before { top: 5.5px; transform: rotate(45deg); }
+.menu[open] .menu-icone::after { top: 5.5px; transform: rotate(-45deg); }
+
+/* Choix sous forme de pastilles (radios masqués) */
+.pastille {
+  @apply relative flex cursor-pointer items-center justify-center gap-2 border border-encre/20 bg-creme px-4 py-3 text-center text-[15px] transition-colors;
+}
+.pastille:hover { @apply border-encre/60; }
+.pastille:has(input:checked) { @apply border-encre bg-encre text-creme; }
+.pastille:has(input:disabled) { @apply cursor-not-allowed border-encre/10 text-encre/35; }
+.pastille:has(input:focus-visible) { outline: 3px solid var(--color-or-profond); outline-offset: 2px; }
+.pastille-jour { @apply w-[4.6rem] shrink-0 flex-col gap-1 px-2 py-3; }

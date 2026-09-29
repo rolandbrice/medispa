@@ -1,8 +1,7 @@
 ---
-// Page temporaire : remplacée à la Task 8. Sert à vérifier que les collections se chargent.
-import { getCollection } from 'astro:content';
-const soins = await getCollection('soins');
-const rituels = await getCollection('rituels');
-const avis = await getCollection('avis');
+// Stub : remplacé par le vrai contenu à la Task 8.
+import Base from '../layouts/Base.astro';
 ---
-<p>{soins.length} soins · {rituels.length} rituels · {avis.length} avis</p>
+<Base lang="fr" page="accueil" titre="MEDI-SPA Saly" description="Centre de bien-être à Saly Portudal : massages, hammam, balnéo, soins, épilation, kinésithérapie.">
+  <h1 class="mx-auto max-w-7xl px-5 py-24 text-6xl">Test du layout</h1>
+</Base>

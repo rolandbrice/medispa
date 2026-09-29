@@ -1,0 +1,20 @@
+---
+import type { Lang } from '../lib/i18n';
+import { nocturnesAVenir } from '../lib/nocturnes';
+import { chemin } from '../lib/routes';
+import { site } from '../lib/site';
+import { t } from '../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const _ = t(lang);
+// Évaluée au build ; scripts/nocturnes.ts la retire côté navigateur si la date passe entre deux builds.
+const prochaine = nocturnesAVenir(site.nocturnes, new Date())[0];
+---
+{prochaine && (
+  <div data-fin={prochaine.fin} class="bg-taupe px-4 py-2 text-center text-[13px] text-encre">
+    <span class="surtitre mr-2">{_('nocturnes.bandeau')}</span>
+    {prochaine.quand[lang]} · {prochaine.heures}
+    <a href={chemin('reserver', lang)} class="ml-2 underline underline-offset-4">{_('nocturnes.reserver')}</a>
+  </div>
+)}

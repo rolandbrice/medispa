@@ -1,0 +1,14 @@
+---
+import type { Lang } from '../lib/i18n';
+import { site, telHref } from '../lib/site';
+import { lienWhatsApp, messageInfo } from '../lib/whatsapp';
+import { t } from '../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const _ = t(lang);
+---
+<nav aria-label={_('barre.label')} class="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 border-t border-encre/10 bg-creme/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden">
+  <a href={telHref()} class="py-3.5 text-center text-[12px] uppercase tracking-[.2em]">{_('cta.appeler')}</a>
+  <a href={lienWhatsApp(site.whatsapp, messageInfo(undefined, lang))} target="_blank" rel="noopener" class="bg-encre py-3.5 text-center text-[12px] uppercase tracking-[.2em] text-creme">{_('cta.whatsapp')}</a>
+</nav>

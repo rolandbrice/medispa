@@ -1,0 +1,23 @@
+---
+// Emblème M + lotus inspiré du logo de l'affiche. À remplacer par le fichier officiel à la signature.
+interface Props { variante?: 'complet' | 'embleme'; sombre?: boolean; class?: string }
+const { variante = 'complet', sombre = false, class: cls = '' } = Astro.props;
+---
+<span class:list={['inline-flex items-center gap-3', cls]}>
+  <svg viewBox="0 0 64 64" class:list={['h-11 w-11 shrink-0', sombre ? 'text-or' : 'text-or-vif']} aria-hidden="true">
+    <circle cx="32" cy="32" r="30.5" fill="none" stroke="currentColor" stroke-width="1.2" />
+    <text x="29" y="43" text-anchor="middle" font-family="'Cormorant Garamond Variable', Georgia, serif" font-size="34" font-weight="500" fill="currentColor">M</text>
+    <g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M46 42c-2.6-2.4-2.6-6.6 0-9 2.6 2.4 2.6 6.6 0 9Z" />
+      <path d="M46 42c-3.8-.4-6.4-3-6.8-6.8 3.8.4 6.4 3 6.8 6.8Z" />
+      <path d="M46 42c3.8-.4 6.4-3 6.8-6.8-3.8.4-6.4 3-6.8 6.8Z" />
+      <path d="M46 42c-.2 5-3.6 8.6-9 10" />
+    </g>
+  </svg>
+  {variante === 'complet' && (
+    <span class="leading-none">
+      <span class:list={['block font-serif text-[21px] font-medium tracking-[.16em]', sombre ? 'text-creme' : 'text-encre']}>MEDI-SPA</span>
+      <span class:list={['mt-1 block text-[10px] uppercase tracking-[.55em]', sombre ? 'text-or' : 'text-brun']}>Saly</span>
+    </span>
+  )}
+</span>

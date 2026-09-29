@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import type { Lang } from '../lib/i18n';
+import { autreLangue, chemin, type Page } from '../lib/routes';
+import { site, telHref } from '../lib/site';
+import { t } from '../i18n/ui';
+import Logo from './Logo.astro';
+
+interface Props { lang: Lang; page: Page | '404'; slug?: string }
+const { lang, page, slug } = Astro.props;
+const _ = t(lang);
+const autre = autreLangue(lang);
+const versAutre = page === '404' ? chemin('accueil', autre) : chemin(page, autre, slug);
+const soins = (await getCollection('soins')).sort((a, b) => a.data.ordre - b.data.ordre);
+const reseaux = [
+  { nom: 'Instagram', href: site.instagram },
+  ...(site.facebook ? [{ nom: 'Facebook', href: site.facebook }] : []),
+  { nom: 'Google', href: site.ficheGoogle },
+];
+---
+<footer class="grain sombre bg-encre text-creme/80">
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 pb-12 pt-16 md:grid-cols-12 md:px-8">
+    <div class="md:col-span-4">
+      <Logo sombre />
+      <p class="mt-6 max-w-xs text-sm leading-relaxed">{_('pied.baseline')}</p>
+    </div>
+    <div class="md:col-span-3">
+      <p class="surtitre text-or">{_('nav.soins')}</p>
+      <ul class="mt-4 space-y-2 text-sm">
+        {soins.map((s) => <li><a class="lien-trait" href={chemin('soin', lang, s.id)}>{s.data.titre[lang]}</a></li>)}
+      </ul>
+    </div>
+    <div class="md:col-span-3">
+      <p class="surtitre text-or">{_('contact.titre')}</p>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li>{site.adresse[lang]}</li>
+        <li><a class="lien-trait" href={telHref()}>{site.telephone}</a></li>
+        <li><a class="lien-trait" href={`mailto:${site.email}`}>{site.email}</a></li>
+      </ul>
+    </div>
+    <div class="md:col-span-2">
+      <p class="surtitre text-or">{_('pied.suivre')}</p>
+      <ul class="mt-4 space-y-2 text-sm">
+        {reseaux.map((r) => <li><a class="lien-trait" href={r.href} target="_blank" rel="noopener">{r.nom}</a></li>)}
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-creme/10">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-5 pb-24 pt-6 text-xs text-creme/70 md:px-8 md:pb-6">
+      <p>© {new Date().getFullYear()} {site.nom}</p>
+      <a href={versAutre} lang={autre} hreflang={autre} class="lien-trait">{_('langue.lien')}</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,23 @@
+---
+interface Props {
+  titre: string;
+  surtitre?: string;
+  intro?: string;
+  centre?: boolean;
+  niveau?: 'h1' | 'h2';
+  fond?: 'clair' | 'taupe' | 'sombre';
+  class?: string;
+}
+const { titre, surtitre, intro, centre = false, niveau = 'h2', fond = 'clair', class: cls = '' } = Astro.props;
+const Balise = niveau;
+// Contrastes : or-profond seulement sur fond clair ; brun sur taupe ; or sur fond sombre.
+const couleurSurtitre = { clair: 'text-or-profond', taupe: 'text-brun', sombre: 'text-or' }[fond];
+const couleurIntro = { clair: 'text-brun', taupe: 'text-brun', sombre: 'text-creme/75' }[fond];
+---
+<div class:list={['max-w-2xl', centre && 'mx-auto text-center', cls]}>
+  {surtitre && <p class:list={['surtitre reveal', couleurSurtitre]}>{surtitre}</p>}
+  <Balise class:list={['reveal mt-4 leading-[1.02]', niveau === 'h1' ? 'text-5xl sm:text-6xl lg:text-7xl' : 'text-4xl sm:text-5xl lg:text-6xl']} style="--d:.06s">
+    <slot name="titre">{titre}</slot>
+  </Balise>
+  {intro && <p class:list={['reveal mt-5 text-lg leading-relaxed', couleurIntro]} style="--d:.12s">{intro}</p>}
+</div>
