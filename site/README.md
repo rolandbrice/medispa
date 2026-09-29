@@ -38,7 +38,7 @@ Chaque fichier de contenu est validé au build. Un champ manquant, une heure mal
 
 ## Passer de la démo à la production
 
-- [ ] `demo: false` dans `src/data/site.json`. Cela retire le bandeau et le `noindex`, et publie les prix dans Schema.org.
+- [ ] `demo: false` dans `src/data/site.json`. Cela retire le bandeau et le `noindex`, publie les prix dans Schema.org et remplace la mention « site de démonstration » du bas de page par « © année MEDI-SPA Saly ». À faire uniquement après paiement.
 - [ ] Vrais tarifs dans les 7 soins et les 3 rituels.
 - [ ] Horaires confirmés.
 - [ ] `nocturnes` à jour.

@@ -51,7 +51,9 @@ const titre = 'text-[15px] font-semibold text-white';
   </div>
   <div class="border-t border-profond-trait">
     <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 pb-24 pt-5 text-sm md:px-8 md:pb-5">
-      <p>© {new Date().getFullYear()} {site.nom}</p>
+      {site.demo
+        ? <p>{_('pied.demo')}</p>
+        : <p>© {new Date().getFullYear()} {site.nom}</p>}
       <a href={versAutre} lang={autre} hreflang={autre} class="hover:text-white hover:underline">{_('langue.lien')}</a>
     </div>
   </div>
