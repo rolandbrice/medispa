@@ -17,9 +17,11 @@ export function prixMin(tarifs: Tarif[]): number | null {
   return payants.length ? Math.min(...payants) : null;
 }
 
+/** « Relaxant (60 min) » ; la durée est insécable pour ne jamais se couper en fin de ligne. */
 export function nomTarif(t: Tarif, lang: Lang): string {
-  if (t.libelle && t.duree) return `${t.libelle[lang]} (${t.duree})`;
-  return t.libelle?.[lang] ?? t.duree ?? '';
+  const duree = t.duree?.replace(/ /g, '\u00a0');
+  if (t.libelle && duree) return `${t.libelle[lang]} (${duree})`;
+  return t.libelle?.[lang] ?? duree ?? '';
 }
 
 /** « Dès 12 000 FCFA » pour les listes ; « Sur devis » si aucun prix payant. */

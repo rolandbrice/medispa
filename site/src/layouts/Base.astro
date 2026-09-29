@@ -53,9 +53,8 @@ const og = await getImage({ src: image, width: 1200, height: 630, fit: 'cover', 
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(og.src, base).href} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#F7F1E8" />
+    <meta name="theme-color" content="#D7EAE6" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script is:inline>document.documentElement.classList.add('js')</script>
     {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
   <body>
@@ -67,7 +66,6 @@ const og = await getImage({ src: image, width: 1200, height: 630, fit: 'cover', 
     <Footer lang={lang} page={page} slug={slug} />
     <BarreMobile lang={lang} />
     <script>
-      import '../scripts/reveal';
       import '../scripts/nocturnes';
     </script>
   </body>

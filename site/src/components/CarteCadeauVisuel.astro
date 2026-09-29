@@ -7,19 +7,16 @@ interface Props { lang: Lang; offre: string; pour: string; de: string; mot?: str
 const { lang, offre, pour, de, mot = '', class: cls = '' } = Astro.props;
 const _ = t(lang);
 ---
-<div class:list={['grain sombre relative aspect-[1.6/1] w-full overflow-hidden rounded-2xl bg-encre p-6 text-creme shadow-2xl sm:p-8', cls]}>
-  <div class="pointer-events-none absolute inset-3 rounded-xl border border-or/35" aria-hidden="true"></div>
-  <div class="arche pointer-events-none absolute -bottom-24 -right-10 h-64 w-48 border border-or/20" aria-hidden="true"></div>
-  <div class="relative flex h-full flex-col">
-    <div class="flex items-start justify-between gap-4">
-      <Logo variante="embleme" sombre />
-      <p class="surtitre text-or">{_('cadeau.carteTitre')}</p>
-    </div>
-    <p class="mt-auto break-words font-serif text-4xl leading-none text-or sm:text-5xl" data-champ="offre">{offre}</p>
-    <p class="mt-2 min-h-[1.5em] line-clamp-2 font-serif text-base italic text-creme/80" data-champ="mot">{mot}</p>
-    <div class="mt-3 flex justify-between gap-4 border-t border-or/25 pt-3 text-[11px] uppercase tracking-[.14em] text-creme/70">
-      <span>{_('cadeau.cartePour')} <span class="normal-case tracking-normal text-creme" data-champ="pour">{pour}</span></span>
-      <span class="text-right">{_('cadeau.carteDe')} <span class="normal-case tracking-normal text-creme" data-champ="de">{de}</span></span>
-    </div>
+<div class:list={['relative flex aspect-[1.6/1] w-full flex-col overflow-hidden rounded-3xl bg-profond p-6 text-white shadow-[0_24px_48px_-24px_rgba(29,59,55,.5)] sm:p-8', cls]}>
+  <div class="demi-bas pointer-events-none absolute -bottom-1 -right-10 h-40 w-80 border border-profond-trait" aria-hidden="true"></div>
+  <div class="relative flex items-start justify-between gap-4">
+    <Logo class="w-[120px] sm:w-[140px]" label="Medi Spa" />
+    <p class="text-sm text-ecume">{_('cadeau.carteTitre')}</p>
+  </div>
+  <p class="relative mt-auto break-words font-serif text-4xl leading-none text-eau sm:text-5xl" data-champ="offre">{offre}</p>
+  <p class="relative mt-2 min-h-[1.5em] line-clamp-2 text-ecume" data-champ="mot">{mot}</p>
+  <div class="relative mt-3 flex justify-between gap-4 border-t border-profond-trait pt-3 text-sm text-ecume">
+    <span>{_('cadeau.cartePour')} <span class="text-white" data-champ="pour">{pour}</span></span>
+    <span class="text-right">{_('cadeau.carteDe')} <span class="text-white" data-champ="de">{de}</span></span>
   </div>
 </div>

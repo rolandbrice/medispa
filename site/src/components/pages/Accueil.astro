@@ -1,29 +1,32 @@
 ---
+import { getImage } from 'astro:assets';
 import type { Lang } from '../../lib/i18n';
+import { schemaEtablissement } from '../../lib/schema-org';
+import { site } from '../../lib/site';
 import { t } from '../../i18n/ui';
 import Base from '../../layouts/Base.astro';
 import Hero from '../accueil/Hero.astro';
-import Preuves from '../accueil/Preuves.astro';
-import SoinsPhares from '../accueil/SoinsPhares.astro';
+import Soins from '../accueil/Soins.astro';
 import Nocturnes from '../accueil/Nocturnes.astro';
-import Lieu from '../accueil/Lieu.astro';
 import Avis from '../accueil/Avis.astro';
-import Infos from '../accueil/Infos.astro';
+import Contact from '../accueil/Contact.astro';
 import Rituels from '../Rituels.astro';
 import TeaserCadeau from '../TeaserCadeau.astro';
+import hero from '../../assets/photos/hero.jpg';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const _ = t(lang);
+const base = Astro.site!.href;
+const image = new URL((await getImage({ src: hero, width: 1200, format: 'jpg' })).src, base).href;
+const schemas = [schemaEtablissement(site, lang, base, image)];
 ---
-<Base lang={lang} page="accueil" titre={_('meta.accueil.titre')} description={_('meta.accueil.description')}>
+<Base lang={lang} page="accueil" titre={_('meta.accueil.titre')} description={_('meta.accueil.description')} schemas={schemas}>
   <Hero lang={lang} />
-  <Preuves lang={lang} />
-  <SoinsPhares lang={lang} />
+  <Soins lang={lang} />
   <Rituels lang={lang} />
   <Nocturnes lang={lang} />
-  <Lieu lang={lang} />
   <Avis lang={lang} />
   <TeaserCadeau lang={lang} />
-  <Infos lang={lang} />
+  <Contact lang={lang} />
 </Base>

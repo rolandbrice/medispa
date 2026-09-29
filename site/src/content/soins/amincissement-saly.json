@@ -3,37 +3,87 @@
   "categorie": "cure",
   "vedette": false,
   "image": "../../assets/photos/amincissement.jpg",
-  "imageAlt": { "fr": "Soin du corps en cabine", "en": "Body treatment in the treatment room" },
-  "titre": { "fr": "Amincissement", "en": "Body contouring" },
+  "imageAlt": {
+    "fr": "Soin du corps en cabine",
+    "en": "Body treatment in the treatment room"
+  },
+  "titre": {
+    "fr": "Amincissement",
+    "en": "Body contouring"
+  },
   "accroche": {
-    "fr": "Un programme sur mesure, décidé ensemble après un bilan offert.",
-    "en": "A tailored programme, agreed together after a free assessment."
+    "fr": "Programme sur mesure après un bilan offert.",
+    "en": "Tailored programme after a free assessment."
   },
   "description": {
-    "fr": "Chaque silhouette est différente, alors nous ne vendons pas de cure toute faite. Le bilan offert permet de définir vos zones prioritaires et un rythme de séances réaliste. Drainage, modelage et soins corps se combinent ensuite pour affiner et raffermir.",
-    "en": "Every body is different, so we do not sell ready-made packages. The free assessment helps define your priority areas and a realistic session schedule. Drainage, sculpting massage and body treatments are then combined to refine and firm."
+    "fr": "Le bilan offert fixe vos objectifs et un rythme de séances réaliste. Drainage, modelage et soins du corps se combinent ensuite.",
+    "en": "The free assessment sets your goals and a realistic session schedule. Drainage, sculpting massage and body treatments are then combined."
   },
   "deroule": {
-    "fr": ["Bilan offert : objectifs, zones, rythme.", "Séances de drainage et de modelage.", "Point d'étape régulier pour ajuster le programme."],
-    "en": ["Free assessment: goals, areas, schedule.", "Drainage and sculpting sessions.", "Regular check-ins to adjust the programme."]
+    "fr": [
+      "Bilan offert : objectifs, zones, rythme.",
+      "Séances de drainage et de modelage.",
+      "Point d'étape régulier pour ajuster le programme."
+    ],
+    "en": [
+      "Free assessment: goals, areas, schedule.",
+      "Drainage and sculpting sessions.",
+      "Regular check-ins to adjust the programme."
+    ]
   },
   "bienfaits": {
-    "fr": ["Sensation de légèreté", "Peau plus ferme et plus lisse", "Suivi personnalisé"],
-    "en": ["A feeling of lightness", "Firmer, smoother skin", "Personal follow-up"]
+    "fr": [
+      "Sensation de légèreté",
+      "Peau plus ferme et plus lisse",
+      "Suivi personnalisé"
+    ],
+    "en": [
+      "A feeling of lightness",
+      "Firmer, smoother skin",
+      "Personal follow-up"
+    ]
   },
   "tarifs": [
-    { "libelle": { "fr": "Bilan", "en": "Assessment" }, "prix": 0 },
-    { "duree": "60 min", "libelle": { "fr": "Séance", "en": "Session" }, "prix": 20000 },
-    { "libelle": { "fr": "Programme 10 séances", "en": "10-session programme" }, "prix": 180000 }
+    {
+      "libelle": {
+        "fr": "Bilan",
+        "en": "Assessment"
+      },
+      "prix": 0
+    },
+    {
+      "duree": "60 min",
+      "libelle": {
+        "fr": "Séance",
+        "en": "Session"
+      },
+      "prix": 20000
+    },
+    {
+      "libelle": {
+        "fr": "Programme 10 séances",
+        "en": "10-session programme"
+      },
+      "prix": 180000
+    }
   ],
   "faq": [
     {
-      "q": { "fr": "Combien de séances faut-il ?", "en": "How many sessions are needed?" },
-      "r": { "fr": "Cela dépend de vos objectifs : c'est tout l'intérêt du bilan offert, qui fixe un rythme réaliste.", "en": "It depends on your goals: that is exactly what the free assessment is for, setting a realistic schedule." }
+      "q": {
+        "fr": "Combien de séances faut-il ?",
+        "en": "How many sessions are needed?"
+      },
+      "r": {
+        "fr": "Cela dépend de vos objectifs : c'est tout l'intérêt du bilan offert, qui fixe un rythme réaliste.",
+        "en": "It depends on your goals: that is exactly what the free assessment is for, setting a realistic schedule."
+      }
     }
   ],
   "seo": {
-    "titre": { "fr": "Amincissement à Saly — drainage, modelage, bilan offert | MEDI-SPA Saly", "en": "Body contouring in Saly, Senegal — drainage, sculpting, free assessment | MEDI-SPA Saly" },
+    "titre": {
+      "fr": "Amincissement à Saly — drainage, modelage, bilan offert | MEDI-SPA Saly",
+      "en": "Body contouring in Saly, Senegal — drainage, sculpting, free assessment | MEDI-SPA Saly"
+    },
     "description": {
       "fr": "Programme amincissement sur mesure à Saly Portudal : bilan offert, drainage, modelage, suivi personnalisé. Réservation WhatsApp.",
       "en": "Tailored body contouring programme in Saly Portudal: free assessment, drainage, sculpting massage, personal follow-up. Book on WhatsApp."

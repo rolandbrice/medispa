@@ -12,9 +12,8 @@ const _ = t(lang);
 const prochaine = nocturnesAVenir(site.nocturnes, new Date())[0];
 ---
 {prochaine && (
-  <div data-fin={prochaine.fin} class="bg-taupe px-4 py-2 text-center text-[13px] text-encre">
-    <span class="surtitre mr-2">{_('nocturnes.bandeau')}</span>
-    {prochaine.quand[lang]} · {prochaine.heures}
+  <div data-fin={prochaine.fin} class="bg-profond px-4 py-2 text-center text-[14px] text-white">
+    {_('nocturnes.titre')} : {prochaine.quand[lang]}, {prochaine.heures}.
     <a href={chemin('reserver', lang)} class="ml-2 underline underline-offset-4">{_('nocturnes.reserver')}</a>
   </div>
 )}

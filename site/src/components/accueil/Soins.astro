@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import type { Lang } from '../../lib/i18n';
+import { chemin } from '../../lib/routes';
+import { site } from '../../lib/site';
+import { t } from '../../i18n/ui';
+import LigneSoin from '../LigneSoin.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const _ = t(lang);
+const soins = (await getCollection('soins')).sort((a, b) => a.data.ordre - b.data.ordre);
+---
+<section id="soins" class="mx-auto max-w-[900px] scroll-mt-6 px-5 py-20 md:py-28">
+  <h2 class="text-5xl md:text-6xl">{_('soins.titre')}</h2>
+  {site.demo && <p class="mt-3 text-sm text-doux">{_('soins.demo')}</p>}
+  <ul class="mt-10 border-t border-brume">
+    {soins.map((s) => <li><LigneSoin soin={s} lang={lang} /></li>)}
+  </ul>
+  <a href={chemin('soins', lang)} class="lien mt-8 inline-block font-semibold">{_('soins.carte')}</a>
+</section>

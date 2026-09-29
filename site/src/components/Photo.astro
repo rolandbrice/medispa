@@ -6,7 +6,7 @@ interface Props {
   src: ImageMetadata;
   alt: string;
   sizes: string;
-  forme?: 'rect' | 'arche' | 'arche-inverse' | 'rond';
+  forme?: 'rect' | 'demi-haut' | 'demi-bas';
   prioritaire?: boolean;
   widths?: number[];
   class?: string;
@@ -15,7 +15,7 @@ interface Props {
 const { src, alt, sizes, forme = 'rect', prioritaire = false, widths = [480, 800, 1200, 1600], class: cls = '', imgClass = '' } = Astro.props;
 // Jamais de largeur supérieure à l'original : on plafonne et on dédoublonne.
 const largeurs = [...new Set(widths.map((w) => Math.min(w, src.width)))];
-const masque = { rect: '', arche: 'arche', 'arche-inverse': 'arche-inverse', rond: 'rounded-full' }[forme];
+const masque = { rect: '', 'demi-haut': 'demi-haut', 'demi-bas': 'demi-bas' }[forme];
 ---
 <div class:list={['overflow-hidden', masque, cls]}>
   <Picture

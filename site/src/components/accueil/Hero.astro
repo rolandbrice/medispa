@@ -1,40 +1,31 @@
 ---
 import type { Lang } from '../../lib/i18n';
+import { resumerHoraires } from '../../lib/horaires';
 import { chemin } from '../../lib/routes';
 import { site } from '../../lib/site';
-import { t } from '../../i18n/ui';
+import { remplir, t } from '../../i18n/ui';
 import Photo from '../Photo.astro';
-import hero from '../../assets/photos/hero.jpg';
+import haut from '../../assets/photos/hero.jpg';
+import bas from '../../assets/photos/cabine-arche.jpg';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const _ = t(lang);
 const note = new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-GB').format(site.note);
 ---
-<section class="relative overflow-hidden">
-  <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 pb-20 pt-10 md:px-8 lg:grid-cols-12 lg:gap-8 lg:pb-28 lg:pt-16">
-    <div class="lg:col-span-6">
-      <p class="surtitre text-or-profond">{_('hero.surtitre')}</p>
-      <h1 class="mt-5 text-[2.9rem] leading-[1] sm:text-6xl lg:text-[5.4rem]">
-        <span class="block">{_('hero.titre1')}</span>
-        <em class="block text-or-profond [text-wrap:balance]">{_('hero.titre2')}</em>
-      </h1>
-      <p class="mt-7 max-w-md text-lg leading-relaxed text-brun">{_('hero.texte')}</p>
-      <div class="mt-9 flex flex-wrap gap-3">
-        <a href={chemin('reserver', lang)} class="bg-encre px-8 py-4 text-[12px] uppercase tracking-[.2em] text-creme transition-colors hover:bg-or-profond">{_('cta.reserver')}&nbsp;<span class="fleche" aria-hidden="true">→</span></a>
-        <a href={chemin('soins', lang)} class="border border-encre/25 px-8 py-4 text-[12px] uppercase tracking-[.2em] transition-colors hover:border-encre hover:bg-encre hover:text-creme">{_('hero.cta2')}</a>
-      </div>
-      <a href={site.ficheGoogle} target="_blank" rel="noopener" class="mt-10 inline-flex items-center gap-3 text-sm text-brun hover:text-encre">
-        <span class="tracking-[.15em] text-or-vif" aria-hidden="true">★★★★★</span>
-        <span><strong class="font-medium text-encre">{note}/5</strong> {_('avis.surGoogle')} · {site.nbAvis} {_('avis.avis')}</span>
-      </a>
-    </div>
-    <div class="relative lg:col-span-6">
-      <Photo src={hero} alt={_('photo.hero')} forme="arche" prioritaire sizes="(min-width: 1024px) 560px, 100vw" class="mx-auto aspect-[5/6] w-full max-w-[560px] bg-taupe" />
-      <div class="absolute -bottom-7 left-3 flex h-32 w-32 flex-col items-center justify-center rounded-full bg-taupe text-center shadow-xl ring-8 ring-creme sm:left-10 lg:-left-4">
-        <span class="font-serif text-4xl leading-none">{note}</span>
-        <span class="mt-1.5 text-[10px] uppercase tracking-[.2em] text-brun">Google</span>
-      </div>
-    </div>
+<section class="bg-eau px-5 pb-20 pt-6 text-center text-profond md:pb-24 md:pt-10">
+  <!-- Le sablier de l'affiche des Nocturnes : deux demi-disques de photo, le titre à la taille -->
+  <div class="mx-auto w-full max-w-[460px]">
+    <Photo src={haut} alt={_('photo.hero')} forme="demi-haut" prioritaire sizes="(min-width: 500px) 460px, 100vw" widths={[460, 920]} class="aspect-[2/1] bg-eau-trait" />
+    <h1 class="mx-auto my-6 max-w-[13ch] text-[2.5rem] leading-[1.03] text-profond sm:text-6xl md:my-7 md:text-[4.3rem]">{_('hero.titre')}</h1>
+    <Photo src={bas} alt={_('photo.cabine')} forme="demi-bas" sizes="(min-width: 500px) 460px, 100vw" widths={[460, 740]} class="aspect-[2/1] bg-eau-trait" />
   </div>
+  <p class="mx-auto mt-9 max-w-[34ch] text-lg text-profond-trait">{_('hero.lieu')} {resumerHoraires(site.horaires, lang)}</p>
+  <div class="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
+    <a href={chemin('reserver', lang)} class="bouton">{_('cta.reserverSoin')}</a>
+    <a href="#soins" class="lien">{_('cta.voirSoins')}</a>
+  </div>
+  <p class="mt-6 text-[15px] text-profond-trait">
+    <a href={site.ficheGoogle} target="_blank" rel="noopener" class="hover:text-profond hover:underline">{remplir(_('note.google'), { note, n: site.nbAvis })}</a>
+  </p>
 </section>

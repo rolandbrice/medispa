@@ -1,0 +1,11 @@
+---
+import { getCollection } from 'astro:content';
+import FicheSoin from '../../components/pages/FicheSoin.astro';
+
+export async function getStaticPaths() {
+  const soins = await getCollection('soins');
+  return soins.map((soin) => ({ params: { slug: soin.id }, props: { soin } }));
+}
+const { soin } = Astro.props;
+---
+<FicheSoin lang="fr" soin={soin} />

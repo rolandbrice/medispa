@@ -1,0 +1,113 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { getImage } from 'astro:assets';
+import type { Lang } from '../../lib/i18n';
+import { aPartirDe, formaterPrix, nomTarif } from '../../lib/prix';
+import { chemin } from '../../lib/routes';
+import { schemaFAQ, schemaFilAriane, schemaService } from '../../lib/schema-org';
+import { site } from '../../lib/site';
+import { lienWhatsApp, messageInfo } from '../../lib/whatsapp';
+import { t } from '../../i18n/ui';
+import Base from '../../layouts/Base.astro';
+import FilAriane from '../FilAriane.astro';
+import LigneSoin from '../LigneSoin.astro';
+import Photo from '../Photo.astro';
+
+interface Props { lang: Lang; soin: CollectionEntry<'soins'> }
+const { lang, soin } = Astro.props;
+const _ = t(lang);
+const d = soin.data;
+const base = Astro.site!.href;
+const reserver = `${chemin('reserver', lang)}?soin=${soin.id}`;
+
+// « Autres soins » : même catégorie d'abord, puis les soins vedettes, puis l'ordre de la carte.
+const autres = (await getCollection('soins'))
+  .filter((s) => s.id !== soin.id)
+  .sort((a, b) => Number(b.data.categorie === d.categorie) - Number(a.data.categorie === d.categorie) || Number(b.data.vedette) - Number(a.data.vedette) || a.data.ordre - b.data.ordre)
+  .slice(0, 3);
+
+const etapes = [
+  { nom: _('fil.accueil'), href: chemin('accueil', lang) },
+  { nom: _('soins.carte'), href: chemin('soins', lang) },
+  { nom: d.titre[lang], href: chemin('soin', lang, soin.id) },
+];
+const image = new URL((await getImage({ src: d.image, width: 1200, format: 'jpg' })).src, base).href;
+const schemas = [
+  schemaService({ id: soin.id, ...d }, site, lang, base, image),
+  schemaFAQ(d.faq, lang),
+  schemaFilAriane(etapes.map((e) => ({ nom: e.nom, url: new URL(e.href, base).href }))),
+].filter((s): s is object => s !== null);
+---
+<Base lang={lang} page="soin" slug={soin.id} titre={d.seo.titre[lang]} description={d.seo.description[lang]} image={d.image} schemas={schemas}>
+  <section class="bg-eau">
+    <div class="mx-auto grid max-w-6xl items-end gap-10 px-5 pb-14 pt-8 md:grid-cols-2 md:px-8 md:pb-16 md:pt-10">
+      <div>
+        <FilAriane lang={lang} etapes={etapes} />
+        <h1 class="mt-8 text-5xl leading-[1.02] md:text-7xl">{d.titre[lang]}</h1>
+        <p class="mt-5 max-w-[40ch] text-lg text-profond-trait">{d.description[lang]}</p>
+        <p class="mt-5 font-semibold">{aPartirDe(d.tarifs, lang)}</p>
+        <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <a href={reserver} class="bouton">{_('fiche.reserver')}</a>
+          <a href={lienWhatsApp(site.whatsapp, messageInfo(d.titre[lang], lang))} target="_blank" rel="noopener" class="lien">{_('fiche.question')}</a>
+        </div>
+      </div>
+      <Photo src={d.image} alt={d.imageAlt[lang]} forme="demi-bas" prioritaire sizes="(min-width: 768px) 520px, 100vw" widths={[520, 1040]} class="mx-auto aspect-[2/1] w-full max-w-[520px] bg-eau-trait" />
+    </div>
+  </section>
+
+  <section class="mx-auto grid max-w-6xl gap-14 px-5 py-20 md:grid-cols-2 md:px-8 md:py-24">
+    <div>
+      <h2 class="text-4xl md:text-5xl">{_('fiche.deroule')}</h2>
+      <ol class="mt-8 space-y-5">
+        {d.deroule[lang].map((e, i) => (
+          <li class="grid grid-cols-[2.5rem_1fr] items-baseline">
+            <span class="font-serif text-2xl text-doux">{i + 1}.</span>
+            <span class="text-lg">{e}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+    <div>
+      <h2 class="text-4xl md:text-5xl">{_('fiche.tarifs')}</h2>
+      <ul class="mt-8 border-t border-brume">
+        {d.tarifs.map((tarif) => (
+          <li class="flex items-baseline justify-between gap-6 border-b border-brume py-3.5">
+            <span class="text-lg">{nomTarif(tarif, lang)}</span>
+            <span class="whitespace-nowrap font-semibold">{formaterPrix(tarif.prix, lang)}</span>
+          </li>
+        ))}
+      </ul>
+      {site.demo && <p class="mt-3 text-sm text-doux">{_('soins.demo')}</p>}
+      <h2 class="mt-14 text-4xl md:text-5xl">{_('fiche.bienfaits')}</h2>
+      <ul class="mt-6 space-y-2 text-lg">
+        {d.bienfaits[lang].map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  {d.faq.length > 0 && (
+    <section class="bg-eau-pale">
+      <div class="mx-auto max-w-[900px] px-5 py-20 md:py-24">
+        <h2 class="text-4xl md:text-5xl">{_('fiche.faq')}</h2>
+        <div class="mt-8 divide-y divide-eau-trait border-y border-eau-trait">
+          {d.faq.map((f) => (
+            <details class="group py-5">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-xl md:text-2xl">
+                {f.q[lang]}
+                <span class="text-2xl leading-none text-doux transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+              </summary>
+              <p class="mt-3 max-w-[60ch] text-doux">{f.r[lang]}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="mx-auto max-w-[900px] px-5 py-20 md:py-24">
+    <h2 class="text-4xl md:text-5xl">{_('fiche.autres')}</h2>
+    <ul class="mt-8 border-t border-brume">
+      {autres.map((s) => <li><LigneSoin soin={s} lang={lang} /></li>)}
+    </ul>
+  </section>
+</Base>

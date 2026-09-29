@@ -3,23 +3,25 @@
 @import "@fontsource-variable/hanken-grotesk";
 
 @theme {
-  --color-lagune: #2F5D57;
-  --color-lagune-trait: #46746D;
-  --color-lagune-profond: #1D3B37;
-  --color-lagune-doux: #4E6B66;
+  --color-eau: #D7EAE6;
+  --color-eau-pale: #EEF5F3;
+  --color-eau-trait: #B9D6D0;
+  --color-profond: #1D3B37;
+  --color-profond-trait: #35524D;
+  --color-doux: #4E6B66;
   --color-ecume: #CFE0DB;
   --color-brume: #E4EEEB;
-  --color-safran: #E9B949;
   --font-serif: "Young Serif", Georgia, serif;
   --font-sans: "Hanken Grotesk Variable", system-ui, sans-serif;
 }
 
 @layer base {
   html { -webkit-tap-highlight-color: transparent; }
-  body { @apply bg-white font-sans text-[17px] leading-[1.6] text-lagune-profond antialiased; }
+  body { @apply bg-white font-sans text-[17px] leading-[1.6] text-profond antialiased; }
   h1, h2, h3 { @apply font-serif font-normal; text-wrap: balance; }
   p { text-wrap: pretty; }
-  :focus-visible { outline: 3px solid var(--color-safran); outline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--color-profond); outline-offset: 3px; }
+  .bg-profond :focus-visible { outline-color: #fff; }
   summary::-webkit-details-marker { display: none; }
 }
 
@@ -35,17 +37,17 @@
 .demi-bas { border-radius: 999px 999px 0 0; }
 
 /* Boutons en pilule, nommés par l'action */
-.bouton { @apply inline-block rounded-full bg-safran px-7 py-3.5 font-semibold text-lagune-profond transition-colors hover:bg-[#F2CB6B]; }
-.bouton-sombre { @apply inline-block rounded-full bg-lagune-profond px-7 py-3.5 font-semibold text-white transition-colors hover:bg-lagune; }
+.bouton { @apply inline-block rounded-full bg-profond px-7 py-3.5 font-semibold text-white transition-colors hover:bg-profond-trait; }
+.bouton-clair { @apply inline-block rounded-full bg-white px-7 py-3.5 font-semibold text-profond transition-colors hover:bg-eau; }
 .lien { @apply border-b border-current pb-px; }
 .lien:hover { @apply border-b-2; }
 
 /* Choix sous forme de pastilles (radios masqués) */
-.pastille { @apply relative flex cursor-pointer items-center justify-center gap-2 rounded-full border border-lagune-profond/25 bg-white px-5 py-3 text-center text-[15px] transition-colors; }
-.pastille:hover { @apply border-lagune-profond/60; }
-.pastille:has(input:checked) { @apply border-lagune-profond bg-lagune-profond text-white; }
-.pastille:has(input:disabled) { @apply cursor-not-allowed border-lagune-profond/10 text-lagune-profond/35; }
-.pastille:has(input:focus-visible) { outline: 3px solid var(--color-safran); outline-offset: 2px; }
+.pastille { @apply relative flex cursor-pointer items-center justify-center gap-2 rounded-full border border-profond/25 bg-white px-5 py-3 text-center text-[15px] transition-colors; }
+.pastille:hover { @apply border-profond/60; }
+.pastille:has(input:checked) { @apply border-profond bg-profond text-white; }
+.pastille:has(input:disabled) { @apply cursor-not-allowed border-profond/10 text-profond/35; }
+.pastille:has(input:focus-visible) { outline: 3px solid var(--color-profond); outline-offset: 2px; }
 .pastille-jour { @apply w-[4.6rem] shrink-0 flex-col gap-0.5 rounded-2xl px-2 py-3; }
 
 /* Icône du menu mobile : deux traits qui se croisent à l'ouverture */
@@ -59,7 +61,7 @@
 .menu[open] .menu-icone::before { top: 5.5px; transform: rotate(45deg); }
 .menu[open] .menu-icone::after { top: 5.5px; transform: rotate(-45deg); }
 
-.skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 100; @apply rounded-full bg-safran px-5 py-3 font-semibold text-lagune-profond; transition: top .2s ease; }
+.skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 100; @apply rounded-full bg-profond px-5 py-3 font-semibold text-white; transition: top .2s ease; }
 .skip-link:focus { top: 1rem; }
 
 @media (prefers-reduced-motion: reduce) {

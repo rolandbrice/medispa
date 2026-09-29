@@ -6,12 +6,12 @@ interface Props { lang: Lang; etapes: { nom: string; href: string }[] }
 const { lang, etapes } = Astro.props;
 const _ = t(lang);
 ---
-<nav aria-label={_('fil.label')} class="text-[12px] uppercase tracking-[.14em] text-brun">
+<nav aria-label={_('fil.label')} class="text-[14px] text-doux">
   <ol class="flex flex-wrap items-center gap-2">
     {etapes.map((e, i) => (
       <li class="flex items-center gap-2">
         {i > 0 && <span aria-hidden="true">/</span>}
-        {i < etapes.length - 1 ? <a href={e.href} class="lien-trait">{e.nom}</a> : <span aria-current="page" class="text-encre">{e.nom}</span>}
+        {i < etapes.length - 1 ? <a href={e.href} class="hover:underline">{e.nom}</a> : <span aria-current="page">{e.nom}</span>}
       </li>
     ))}
   </ol>

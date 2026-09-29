@@ -42,10 +42,10 @@ describe('aPartirDe', () => {
 
 describe('nomTarif', () => {
   it('combine libellé traduit et durée', () => {
-    expect(nomTarif({ prix: 1, duree: '60 min', libelle: { fr: 'Duo', en: 'Couple' } }, 'en')).toBe('Couple (60 min)');
+    expect(nomTarif({ prix: 1, duree: '60 min', libelle: { fr: 'Duo', en: 'Couple' } }, 'en')).toBe('Couple (60\u00a0min)');
   });
   it('se replie sur la durée seule, puis sur le libellé seul', () => {
-    expect(nomTarif({ prix: 1, duree: '30 min' }, 'fr')).toBe('30 min');
+    expect(nomTarif({ prix: 1, duree: '30 min' }, 'fr')).toBe('30\u00a0min');
     expect(nomTarif({ prix: 1, libelle: { fr: 'Sourcils', en: 'Brows' } }, 'fr')).toBe('Sourcils');
   });
 });

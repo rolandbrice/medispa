@@ -1,0 +1,15 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Lang } from '../lib/i18n';
+import { aPartirDe } from '../lib/prix';
+import { chemin } from '../lib/routes';
+
+interface Props { soin: CollectionEntry<'soins'>; lang: Lang; niveau?: 'h2' | 'h3' }
+const { soin, lang, niveau = 'h3' } = Astro.props;
+const Titre = niveau;
+---
+<a href={chemin('soin', lang, soin.id)} class="group grid gap-x-6 border-b border-brume py-6 sm:grid-cols-[1fr_auto] sm:py-7">
+  <Titre class="text-[1.65rem] leading-tight group-hover:underline group-hover:decoration-2 group-hover:underline-offset-8 sm:text-3xl">{soin.data.titre[lang]}</Titre>
+  <p class="mt-1.5 text-doux sm:col-start-1">{soin.data.accroche[lang]}</p>
+  <p class="mt-2 font-semibold sm:col-start-2 sm:row-start-1 sm:mt-0 sm:self-end sm:whitespace-nowrap">{aPartirDe(soin.data.tarifs, lang)}</p>
+</a>

@@ -1,19 +1,22 @@
 ---
+// Photo de la façade ; au clic, elle laisse place à la carte Google (aucun script tiers au chargement).
 import type { Lang } from '../lib/i18n';
 import { site } from '../lib/site';
 import { t } from '../i18n/ui';
+import Photo from './Photo.astro';
+import facade from '../assets/photos/facade.jpg';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const _ = t(lang);
 const src = `https://www.google.com/maps?q=${encodeURIComponent(site.requeteMaps)}&hl=${lang}&output=embed`;
 ---
-<div class="carte-maps relative flex aspect-[4/3] w-full flex-col items-center justify-center overflow-hidden bg-taupe p-8 text-center lg:aspect-auto lg:h-full lg:min-h-[480px]" data-src={src} data-titre={`Google Maps — ${site.nom}`}>
-  <div class="arche pointer-events-none absolute left-1/2 top-10 h-[130%] w-[70%] -translate-x-1/2 border border-encre/15" aria-hidden="true"></div>
-  <svg viewBox="0 0 24 24" class="relative h-10 w-10 text-or-profond" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 1 1 13 0c0 5.2-6.5 11-6.5 11Z" /><circle cx="12" cy="10" r="2.3" /></svg>
-  <p class="relative mt-4 font-serif text-2xl">{site.adresse[lang]}</p>
-  <button type="button" class="relative mt-6 bg-encre px-7 py-3.5 text-[12px] uppercase tracking-[.18em] text-creme transition-colors hover:bg-or-profond">{_('infos.carte')}</button>
-  <p class="relative mt-3 max-w-xs text-xs text-brun">{_('infos.carteNote')}</p>
+<div class="carte-maps relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-brume" data-src={src} data-titre={`Google Maps, ${site.nom}`}>
+  <Photo src={facade} alt={_('photo.facade')} sizes="(min-width: 1024px) 560px, 100vw" class="absolute inset-0" imgClass="object-[center_40%]" />
+  <div class="absolute inset-x-0 bottom-0 flex flex-wrap items-center gap-x-4 gap-y-2 bg-gradient-to-t from-profond/85 to-transparent p-5 pt-16 text-white">
+    <button type="button" class="bouton-clair">{_('contact.carte')}</button>
+    <span class="text-sm text-ecume">{_('contact.carteNote')}</span>
+  </div>
 </div>
 
 <script>

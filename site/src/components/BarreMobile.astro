@@ -8,7 +8,7 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const _ = t(lang);
 ---
-<nav aria-label={_('barre.label')} class="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 border-t border-encre/10 bg-creme/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden">
-  <a href={telHref()} class="py-3.5 text-center text-[12px] uppercase tracking-[.2em]">{_('cta.appeler')}</a>
-  <a href={lienWhatsApp(site.whatsapp, messageInfo(undefined, lang))} target="_blank" rel="noopener" class="bg-encre py-3.5 text-center text-[12px] uppercase tracking-[.2em] text-creme">{_('cta.whatsapp')}</a>
+<nav aria-label={_('barre.label')} class="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-2 border-t border-brume bg-white/95 px-3 pt-2 pb-[max(.5rem,env(safe-area-inset-bottom))] backdrop-blur md:hidden">
+  <a href={telHref()} class="rounded-full border border-profond/25 py-2.5 text-center font-semibold">{_('cta.appeler')}</a>
+  <a href={lienWhatsApp(site.whatsapp, messageInfo(undefined, lang))} target="_blank" rel="noopener" class="rounded-full bg-profond py-2.5 text-center font-semibold text-white">{_('cta.whatsapp')}</a>
 </nav>

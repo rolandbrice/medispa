@@ -3,33 +3,72 @@
   "categorie": "medi",
   "vedette": false,
   "image": "../../assets/photos/kine.jpg",
-  "imageAlt": { "fr": "Séance de kinésithérapie", "en": "Physiotherapy session" },
-  "titre": { "fr": "Kinésithérapie", "en": "Physiotherapy" },
+  "imageAlt": {
+    "fr": "Séance de kinésithérapie",
+    "en": "Physiotherapy session"
+  },
+  "titre": {
+    "fr": "Kinésithérapie",
+    "en": "Physiotherapy"
+  },
   "accroche": {
-    "fr": "Le « Médi » de Médi-Spa : bouger mieux, avoir moins mal, récupérer plus vite.",
-    "en": "The \"Medi\" in Medi-Spa: move better, hurt less, recover faster."
+    "fr": "Bilan, puis séances de rééducation.",
+    "en": "Assessment, then rehabilitation sessions."
   },
   "description": {
-    "fr": "Mal de dos, raideur, récupération après une blessure ou une opération : la kinésithérapie accompagne la remise en forme sur plusieurs séances. Tout commence par un bilan, puis un programme adapté à votre situation et à votre rythme.",
-    "en": "Back pain, stiffness, recovery after an injury or surgery: physiotherapy supports your return to fitness over several sessions. Everything starts with an assessment, then a programme tailored to your situation and pace."
+    "fr": "Mal de dos, raideur, récupération après une blessure ou une opération : un bilan, puis une série de séances adaptée.",
+    "en": "Back pain, stiffness, recovery after injury or surgery: an assessment, then a tailored series of sessions."
   },
   "deroule": {
-    "fr": ["Bilan : vos douleurs, vos antécédents, vos objectifs.", "Séance : mobilisation, renforcement, massage thérapeutique.", "Conseils et exercices à refaire chez vous."],
-    "en": ["Assessment: your pain, history and goals.", "Session: mobilisation, strengthening, therapeutic massage.", "Advice and exercises to repeat at home."]
+    "fr": [
+      "Bilan : vos douleurs, vos antécédents, vos objectifs.",
+      "Séance : mobilisation, renforcement, massage thérapeutique.",
+      "Conseils et exercices à refaire chez vous."
+    ],
+    "en": [
+      "Assessment: your pain, history and goals.",
+      "Session: mobilisation, strengthening, therapeutic massage.",
+      "Advice and exercises to repeat at home."
+    ]
   },
   "bienfaits": {
-    "fr": ["Soulage les douleurs de dos et de nuque", "Accompagne la récupération après blessure", "Programme suivi sur plusieurs séances"],
-    "en": ["Relieves back and neck pain", "Supports recovery after injury", "A programme followed over several sessions"]
+    "fr": [
+      "Soulage les douleurs de dos et de nuque",
+      "Accompagne la récupération après blessure",
+      "Programme suivi sur plusieurs séances"
+    ],
+    "en": [
+      "Relieves back and neck pain",
+      "Supports recovery after injury",
+      "A programme followed over several sessions"
+    ]
   },
-  "tarifs": [{ "libelle": { "fr": "Séance, après bilan", "en": "Session, after assessment" }, "prix": null }],
+  "tarifs": [
+    {
+      "libelle": {
+        "fr": "Séance, après bilan",
+        "en": "Session, after assessment"
+      },
+      "prix": null
+    }
+  ],
   "faq": [
     {
-      "q": { "fr": "Faut-il une ordonnance ?", "en": "Do I need a prescription?" },
-      "r": { "fr": "Écrivez-nous sur WhatsApp en décrivant votre situation : nous vous indiquerons la marche à suivre.", "en": "Message us on WhatsApp describing your situation: we will tell you how to proceed." }
+      "q": {
+        "fr": "Faut-il une ordonnance ?",
+        "en": "Do I need a prescription?"
+      },
+      "r": {
+        "fr": "Écrivez-nous sur WhatsApp en décrivant votre situation : nous vous indiquerons la marche à suivre.",
+        "en": "Message us on WhatsApp describing your situation: we will tell you how to proceed."
+      }
     }
   ],
   "seo": {
-    "titre": { "fr": "Kinésithérapie à Saly — dos, récupération, remise en forme | MEDI-SPA Saly", "en": "Physiotherapy in Saly, Senegal — back pain, recovery, fitness | MEDI-SPA Saly" },
+    "titre": {
+      "fr": "Kinésithérapie à Saly — dos, récupération, remise en forme | MEDI-SPA Saly",
+      "en": "Physiotherapy in Saly, Senegal — back pain, recovery, fitness | MEDI-SPA Saly"
+    },
     "description": {
       "fr": "Kinésithérapie à Saly Portudal, face au Totem : bilan, séances de rééducation et de remise en forme. Prise de rendez-vous sur WhatsApp.",
       "en": "Physiotherapy in Saly Portudal, opposite the Totem: assessment, rehabilitation and fitness sessions. Appointments on WhatsApp."

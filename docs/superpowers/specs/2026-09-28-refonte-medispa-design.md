@@ -168,31 +168,31 @@ Paiement en ligne intégré, calendrier temps réel, rappels automatiques J-1, p
 
 ---
 
-## Révision 1 — 29/09/2026 : direction « Lagune », logo de la façade et règles de texte
+## Révision 1 — 29/09/2026 : direction « Eau claire », logo de la façade et règles de texte
 
-Cette révision **remplace le §3** (direction artistique) et **modifie le contenu de l'accueil (§4)**, après le retour du client : la première version faisait « générique IA », avec Cormorant + Jost, du beige et de l'or, et un texte qui répétait les infos. Parmi deux maquettes rendues (`maquettes/`), le client a choisi la **structure** B (sablier, Young Serif, menu typographique), dans la **couleur « Lagune »** (`maquettes/b1-lagune.html`), avec le **logo de la façade**.
+Cette révision **remplace le §3** (direction artistique) et **modifie le contenu de l'accueil (§4)**, après le retour du client : la première version faisait « générique IA », avec Cormorant + Jost, du beige et de l'or, et un texte qui répétait les infos. Parmi deux maquettes rendues (`maquettes/`), le client a choisi la **structure** B (sablier, Young Serif, menu typographique), dans la **couleur « Eau claire »** (`maquettes/b2-eau-claire.html`), avec le **logo de la façade**.
 
 ### R1. Direction artistique
 
-**Couleurs — palette « Lagune »**, en remplacement de l'indigo à la demande du client (une couleur qui détend). Elle vient du vert d'eau de la lagune de la Somone, voisine de Saly. Contrastes vérifiés.
+**Couleurs — palette « Eau claire »**, choisie par le client parmi trois variantes (`maquettes/b2-eau-claire.html`) en remplacement de l'indigo : une couleur qui détend. Aqua pâle lumineux, texte vert profond, sans accent vif. Contrastes vérifiés.
 
 | Jeton | Valeur | Usage |
 |---|---|---|
-| `lagune` | `#2F5D57` | Blocs pleins (hero, nocturnes, pied de page). Texte blanc dessus : 7,4 |
-| `lagune-trait` | `#46746D` | Filets sur fond lagune |
-| `lagune-profond` | `#1D3B37` | Texte principal sur blanc (12,6) et texte des boutons safran (6,6) |
-| `lagune-doux` | `#4E6B66` | Texte secondaire sur blanc (5,8) |
-| `ecume` | `#CFE0DB` | Texte secondaire sur fond lagune (5,4) |
-| `brume` | `#E4EEEB` | Filets et fonds secondaires sur blanc |
-| `blanc` | `#FFFFFF` | Fond principal |
-| `safran` | `#E9B949` | Accent : boutons principaux, titre du hero sur lagune (grand corps uniquement, 4,1) |
+| `eau` | `#D7EAE6` | Fond signature (en-tête, hero). Texte profond dessus : 9,7 |
+| `eau-pale` | `#EEF5F3` | Fonds secondaires (rituels, carte cadeau) |
+| `eau-trait` | `#B9D6D0` | Filets sur fond eau |
+| `profond` | `#1D3B37` | Texte principal (12,1 sur blanc), boutons, fonds sombres (nocturnes, pied de page) |
+| `profond-trait` | `#35524D` | Texte secondaire sur eau (6,8), filets sur fond profond |
+| `doux` | `#4E6B66` | Texte secondaire sur blanc (5,8) et sur eau-pâle (5,3) |
+| `ecume` | `#CFE0DB` | Texte secondaire sur fond profond (8,9) |
+| `brume` | `#E4EEEB` | Filets sur blanc |
 
-**Logo** : l'écriture de l'enseigne de la façade, décalquée depuis la photo frontale. Il comprend « Medi » en capitales géométriques au M évasé, « Spa » en script et le visage dessiné au trait. Il est vectorisé en un seul tracé SVG monochrome (`public/logo-medi-spa.svg`). Il s'affiche via un masque CSS pour prendre la couleur du texte (blanc sur lagune, lagune-profond sur blanc), et le fichier reste en cache. Remplace le M + lotus de la v1.
+**Logo** : l'écriture de l'enseigne de la façade, décalquée depuis la photo frontale. Il comprend « Medi » en capitales géométriques au M évasé, « Spa » en script et le visage dessiné au trait. Il est vectorisé en un seul tracé SVG monochrome (`public/logo-medi-spa.svg`). Il s'affiche via un masque CSS pour prendre la couleur du texte (profond sur fond clair, blanc sur fond profond), et le fichier reste en cache. Remplace le M + lotus de la v1.
 
 **Autres choix**
 - **Typographies** : **Young Serif** pour les titres (une seule graisse) et **Hanken Grotesk** pour le texte (400, 500, 600). Les deux sont auto-hébergées (`@fontsource`).
 - **Motif** : le sablier de l'affiche, c'est-à-dire deux demi-disques de photo. Il est utilisé **une seule fois**, dans le hero, avec le titre à la taille du sablier. Chaque fiche soin a une seule photo en demi-disque. Aucun autre masque décoratif.
-- **Mise en page** : hero centré et symétrique. Les contenus sont alignés à gauche dans une colonne d'environ 900 px. Beaucoup de blanc, alternance de blocs lagune et de blocs blancs.
+- **Mise en page** : hero centré et symétrique. Les contenus sont alignés à gauche dans une colonne d'environ 900 px. Beaucoup de blanc, alternance de blocs eau claire, de blocs blancs et de deux blocs vert profond (nocturnes, pied de page).
 - **Boutons** : en pilule, en minuscules, un verbe et un objet, sans flèche.
 - **Mouvement** : aucune apparition au scroll. Seules les actions de l'utilisateur animent quelque chose (ouvrir, sélectionner).
 
@@ -215,12 +215,12 @@ Cette révision **remplace le §3** (direction artistique) et **modifie le conte
 
 ### R3. Accueil révisé (remplace la composition du §4)
 
-1. **Hero lagune en sablier** : titre « Massages, hammam et kiné à Saly », ligne adresse + horaires, deux boutons, note Google.
+1. **Hero eau claire en sablier** : titre « Massages, hammam et kiné à Saly », ligne adresse + horaires, deux boutons, note Google.
 2. **Soins** : menu typographique des 7 soins (nom, une ligne, prix « dès … »).
 3. **Rituels** : trois forfaits (nom, durée, contenu, prix), sans badge.
-4. **Nocturnes** : bande lagune, une phrase et un bouton WhatsApp. Les dates n'apparaissent que si une nocturne à venir est saisie.
+4. **Nocturnes** : bande vert profond (le soir), une phrase et un bouton WhatsApp. Les dates n'apparaissent que si une nocturne à venir est saisie.
 5. **Avis** : les avis Google recopiés mot pour mot, en grand, avec le prénom et le mois. Un lien vers tous les avis.
-6. **Carte cadeau** : une phrase, le visuel de la carte (lagune et safran) et un bouton.
+6. **Carte cadeau** : une phrase, le visuel de la carte (vert profond et eau) et un bouton.
 7. **Contact** : photo réelle de la façade, pour reconnaître le lieu en arrivant. Adresse, horaires en une ligne, téléphone, WhatsApp, e-mail, carte au clic.
 
 **Supprimés** : le bandeau de réassurance, la section « Le lieu » (affirmations invérifiables) et le badge circulaire de note.

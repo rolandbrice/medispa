@@ -1,0 +1,28 @@
+---
+import type { Lang } from '../../lib/i18n';
+import { resumerHoraires } from '../../lib/horaires';
+import { site, telHref } from '../../lib/site';
+import { lienWhatsApp, messageInfo } from '../../lib/whatsapp';
+import { t } from '../../i18n/ui';
+import CarteMaps from '../CarteMaps.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const _ = t(lang);
+const itineraire = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.requeteMaps)}`;
+---
+<section id="contact" class="mx-auto grid max-w-6xl scroll-mt-6 gap-12 px-5 py-20 md:grid-cols-2 md:items-center md:gap-16 md:px-8 md:py-28">
+  <div>
+    <h2 class="text-5xl md:text-6xl">{_('contact.titre')}</h2>
+    <p class="mt-6 text-lg">{site.adresse[lang]}</p>
+    <a href={itineraire} target="_blank" rel="noopener" class="lien mt-2 inline-block">{_('contact.itineraire')}</a>
+    <p class="mt-6">{resumerHoraires(site.horaires, lang)} {site.noteHoraires[lang]}.</p>
+    <ul class="mt-6 space-y-1.5">
+      <li><a class="lien" href={telHref()}>{site.telephone}</a></li>
+      <li><a class="lien" href={lienWhatsApp(site.whatsapp, messageInfo(undefined, lang))} target="_blank" rel="noopener">WhatsApp</a></li>
+      <li><a class="lien" href={`mailto:${site.email}`}>{site.email}</a></li>
+    </ul>
+    <p class="mt-6 text-doux">{_('contact.paiement')}</p>
+  </div>
+  <CarteMaps lang={lang} />
+</section>

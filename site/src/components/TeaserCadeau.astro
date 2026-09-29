@@ -4,23 +4,18 @@ import { formaterPrix } from '../lib/prix';
 import { chemin } from '../lib/routes';
 import { t } from '../i18n/ui';
 import CarteCadeauVisuel from './CarteCadeauVisuel.astro';
-import Titre from './Titre.astro';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const _ = t(lang);
 ---
-<section class="overflow-hidden py-20 md:py-28">
-  <div class="mx-auto grid max-w-7xl items-center gap-16 px-5 md:px-8 lg:grid-cols-2">
-    <div class="reveal relative mx-auto w-full max-w-md py-6">
-      <div class="absolute inset-0 translate-x-6 translate-y-4 rotate-[5deg] rounded-2xl bg-taupe" aria-hidden="true"></div>
-      <CarteCadeauVisuel lang={lang} offre={formaterPrix(50000, lang)} pour="Awa" de="Moussa" mot={lang === 'fr' ? 'Pour ta journée à toi.' : 'A day just for you.'} class="rotate-[-3deg]" />
-    </div>
+<section class="bg-eau-pale py-20 md:py-28">
+  <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-2 md:gap-16 md:px-8">
+    <CarteCadeauVisuel lang={lang} offre={formaterPrix(50000, lang)} pour="Awa" de="Moussa" mot={_('cadeau.teaser.mot')} class="mx-auto max-w-md -rotate-2" />
     <div>
-      <Titre surtitre={_('cadeau.teaser.surtitre')} titre={_('cadeau.teaser.titre')} intro={_('cadeau.teaser.texte')} />
-      <a href={chemin('carte-cadeau', lang)} class="reveal mt-9 inline-block bg-encre px-8 py-4 text-[12px] uppercase tracking-[.2em] text-creme transition-colors hover:bg-or-profond" style="--d:.18s">
-        {_('cadeau.teaser.cta')}&nbsp;<span class="fleche" aria-hidden="true">→</span>
-      </a>
+      <h2 class="text-5xl md:text-6xl">{_('cadeau.teaser.titre')}</h2>
+      <p class="mt-4 max-w-[40ch] text-lg text-doux">{_('cadeau.teaser.texte')}</p>
+      <a href={chemin('carte-cadeau', lang)} class="bouton mt-8">{_('cadeau.teaser.cta')}</a>
     </div>
   </div>
 </section>

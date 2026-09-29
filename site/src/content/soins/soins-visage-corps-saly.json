@@ -3,41 +3,101 @@
   "categorie": "visage",
   "vedette": true,
   "image": "../../assets/photos/visage.jpg",
-  "imageAlt": { "fr": "Soin du visage en cabine", "en": "Facial treatment in the treatment room" },
-  "titre": { "fr": "Soins visage & corps", "en": "Face & body treatments" },
+  "imageAlt": {
+    "fr": "Soin du visage en cabine",
+    "en": "Facial treatment in the treatment room"
+  },
+  "titre": {
+    "fr": "Soins visage et corps",
+    "en": "Face and body treatments"
+  },
   "accroche": {
-    "fr": "Une peau nette, hydratée et lumineuse, même sous le soleil de la Petite-Côte.",
-    "en": "Clear, hydrated, glowing skin, even under the Petite-Côte sun."
+    "fr": "Nettoyage, éclat, hydratation, gommage.",
+    "en": "Cleansing, radiance, hydration, scrub."
   },
   "description": {
-    "fr": "Soleil, sel, climatisation : la peau est mise à l'épreuve à Saly. Chaque soin commence par un diagnostic, puis nous choisissons le protocole adapté à votre peau, qu'elle soit sèche, mixte ou sensible. Pour le corps, un gommage suivi d'une hydratation laisse la peau douce pendant des jours.",
-    "en": "Sun, salt, air conditioning: skin is put to the test in Saly. Every treatment starts with a skin assessment, then we choose the routine that suits your skin, whether dry, combination or sensitive. For the body, a scrub followed by deep hydration leaves skin soft for days."
+    "fr": "Chaque soin commence par un diagnostic de peau, puis un protocole adapté à votre type de peau. Pour le corps, un gommage suivi d’une hydratation.",
+    "en": "Each treatment starts with a skin assessment, followed by a routine suited to your skin type. For the body, a scrub followed by hydration."
   },
   "deroule": {
-    "fr": ["Diagnostic de peau.", "Nettoyage et exfoliation douce.", "Masque et massage du visage.", "Hydratation et protection solaire."],
-    "en": ["Skin assessment.", "Cleansing and gentle exfoliation.", "Mask and facial massage.", "Moisturiser and sun protection."]
+    "fr": [
+      "Diagnostic de peau.",
+      "Nettoyage et exfoliation douce.",
+      "Masque et massage du visage.",
+      "Hydratation et protection solaire."
+    ],
+    "en": [
+      "Skin assessment.",
+      "Cleansing and gentle exfoliation.",
+      "Mask and facial massage.",
+      "Moisturiser and sun protection."
+    ]
   },
   "bienfaits": {
-    "fr": ["Teint plus uniforme et lumineux", "Peau hydratée en profondeur", "Adapté à tous les types de peau"],
-    "en": ["A brighter, more even complexion", "Deeply hydrated skin", "Suitable for every skin type"]
+    "fr": [
+      "Teint plus uniforme et lumineux",
+      "Peau hydratée en profondeur",
+      "Adapté à tous les types de peau"
+    ],
+    "en": [
+      "A brighter, more even complexion",
+      "Deeply hydrated skin",
+      "Suitable for every skin type"
+    ]
   },
   "tarifs": [
-    { "duree": "45 min", "libelle": { "fr": "Soin éclat visage", "en": "Radiance facial" }, "prix": 15000 },
-    { "duree": "75 min", "libelle": { "fr": "Soin hydratant profond", "en": "Deep hydration facial" }, "prix": 25000 },
-    { "duree": "30 min", "libelle": { "fr": "Gommage corps", "en": "Body scrub" }, "prix": 10000 }
+    {
+      "duree": "45 min",
+      "libelle": {
+        "fr": "Soin éclat visage",
+        "en": "Radiance facial"
+      },
+      "prix": 15000
+    },
+    {
+      "duree": "75 min",
+      "libelle": {
+        "fr": "Soin hydratant profond",
+        "en": "Deep hydration facial"
+      },
+      "prix": 25000
+    },
+    {
+      "duree": "30 min",
+      "libelle": {
+        "fr": "Gommage corps",
+        "en": "Body scrub"
+      },
+      "prix": 10000
+    }
   ],
   "faq": [
     {
-      "q": { "fr": "Mon type de peau est-il concerné ?", "en": "Is it suitable for my skin type?" },
-      "r": { "fr": "Oui : le diagnostic du début sert justement à adapter les produits et les gestes à votre peau.", "en": "Yes: the assessment at the start is there to adapt products and techniques to your skin." }
+      "q": {
+        "fr": "Mon type de peau est-il concerné ?",
+        "en": "Is it suitable for my skin type?"
+      },
+      "r": {
+        "fr": "Oui : le diagnostic du début sert justement à adapter les produits et les gestes à votre peau.",
+        "en": "Yes: the assessment at the start is there to adapt products and techniques to your skin."
+      }
     },
     {
-      "q": { "fr": "Peut-on s'exposer au soleil après ?", "en": "Can I go in the sun afterwards?" },
-      "r": { "fr": "Nous terminons par une protection solaire et vous conseillons pour le reste de la journée.", "en": "We finish with sun protection and give you advice for the rest of the day." }
+      "q": {
+        "fr": "Peut-on s'exposer au soleil après ?",
+        "en": "Can I go in the sun afterwards?"
+      },
+      "r": {
+        "fr": "Nous terminons par une protection solaire et vous conseillons pour le reste de la journée.",
+        "en": "We finish with sun protection and give you advice for the rest of the day."
+      }
     }
   ],
   "seo": {
-    "titre": { "fr": "Soin du visage à Saly — éclat, hydratation, gommage | MEDI-SPA Saly", "en": "Facials in Saly, Senegal — radiance, hydration, body scrub | MEDI-SPA Saly" },
+    "titre": {
+      "fr": "Soin du visage à Saly — éclat, hydratation, gommage | MEDI-SPA Saly",
+      "en": "Facials in Saly, Senegal — radiance, hydration, body scrub | MEDI-SPA Saly"
+    },
     "description": {
       "fr": "Soins du visage et du corps à Saly Portudal : diagnostic, éclat, hydratation profonde, gommage. Pour toutes les peaux. Réservation WhatsApp.",
       "en": "Face and body treatments in Saly Portudal: skin assessment, radiance, deep hydration, body scrub. For every skin type. Book on WhatsApp."
