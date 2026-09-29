@@ -16,21 +16,21 @@
     "en": "Relaxing, invigorating or as a couple."
   },
   "description": {
-    "fr": "Nous adaptons la pression à votre demande, du massage enveloppant au travail appuyé sur le dos et les épaules. Seul ou à deux, dans une cabine climatisée.",
-    "en": "We adjust the pressure to what you ask for, from gentle strokes to deeper work on the back and shoulders. Alone or as a couple, in an air-conditioned room."
+    "fr": "Nous adaptons la pression à votre demande, du massage enveloppant au travail appuyé sur le dos et les épaules. Seul ou à deux.",
+    "en": "We adjust the pressure to what you ask for, from gentle strokes to deeper work on the back and shoulders. Alone or as a couple."
   },
   "deroule": {
     "fr": [
       "Accueil et quelques questions : zones tendues, pression souhaitée.",
-      "Installation en cabine, serviettes chaudes.",
+      "Installation en cabine.",
       "Massage aux huiles, à votre rythme.",
-      "Temps de repos et boisson avant de repartir."
+      "Temps de repos avant de repartir."
     ],
     "en": [
       "Welcome and a few questions: tense areas, preferred pressure.",
-      "Settle into the room with warm towels.",
+      "Settle into the treatment room.",
       "Oil massage at your own pace.",
-      "Rest and a drink before you leave."
+      "Time to rest before you leave."
     ]
   },
   "bienfaits": {
@@ -104,8 +104,8 @@
         "en": "What should I bring?"
       },
       "r": {
-        "fr": "Rien : serviettes et sous-vêtements jetables sont fournis. Arrivez cinq minutes en avance pour profiter pleinement du soin.",
-        "en": "Nothing: towels and disposable underwear are provided. Arrive five minutes early to make the most of your treatment."
+        "fr": "Rien de particulier. Arrivez cinq minutes en avance pour profiter pleinement du soin.",
+        "en": "Nothing in particular. Arrive five minutes early to make the most of your treatment."
       }
     },
     {

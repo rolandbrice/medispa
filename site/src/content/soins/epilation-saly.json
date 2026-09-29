@@ -16,8 +16,8 @@
     "en": "Face and body, with wax."
   },
   "description": {
-    "fr": "Épilation à la cire avec spatule à usage unique, peau préparée puis apaisée.",
-    "en": "Waxing with single-use spatulas, skin prepared beforehand and soothed afterwards."
+    "fr": "Épilation à la cire, peau préparée puis apaisée.",
+    "en": "Waxing, with the skin prepared beforehand and soothed afterwards."
   },
   "deroule": {
     "fr": [
@@ -34,12 +34,10 @@
   "bienfaits": {
     "fr": [
       "Peau nette pendant plusieurs semaines",
-      "Hygiène stricte, matériel à usage unique",
       "Toutes zones, toutes peaux"
     ],
     "en": [
       "Smooth skin for several weeks",
-      "Strict hygiene, single-use tools",
       "Every area, every skin type"
     ]
   },
@@ -115,8 +113,8 @@
       "en": "Waxing in Saly, Senegal — brows, legs, bikini | MEDI-SPA Saly"
     },
     "description": {
-      "fr": "Épilation à la cire à Saly Portudal : sourcils, aisselles, maillot, jambes. Hygiène stricte, matériel à usage unique. Réservation WhatsApp.",
-      "en": "Waxing in Saly Portudal: brows, underarms, bikini line, legs. Strict hygiene, single-use tools. Book on WhatsApp."
+      "fr": "Épilation à la cire à Saly Portudal : sourcils, lèvre, aisselles, maillot, jambes. Tarifs affichés, réservation sur WhatsApp.",
+      "en": "Waxing in Saly Portudal: brows, lip, underarms, bikini line, legs. Prices online, book on WhatsApp."
     }
   }
 }

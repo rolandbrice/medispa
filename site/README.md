@@ -26,7 +26,7 @@ npm run verifier   # contrôle de dist/ : langue, SEO, liens, WhatsApp, règles 
 
 Chaque fichier de contenu est validé au build. Un champ manquant, une heure mal écrite ou un numéro WhatsApp avec « + » font échouer le build au lieu de publier une page cassée.
 
-**Nocturnes** : ajouter une entrée dans `nocturnes` (`debut`, `fin`, `heures`, `quand`, `titre`, `texte`). La bannière apparaît seule, puis disparaît une fois la date passée, même sans nouveau build.
+**Nocturnes** : ajouter une entrée dans `nocturnes`, par exemple `{ "debut": "2026-12-18", "fin": "2026-12-19", "heures": ["18:00", "21:00"], "quand": { "fr": "vendredi 18 et samedi 19 décembre", "en": "Friday 18 and Saturday 19 December" } }`. Une bannière s'affiche pour la prochaine nocturne. Côté navigateur, une nocturne passée disparaît et la suivante prend le relais, même sans nouveau build.
 
 ## Architecture
 

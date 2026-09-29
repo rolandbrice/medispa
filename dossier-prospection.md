@@ -67,12 +67,13 @@
 1. Horaires exacts, dimanche compris ?
 2. Les nocturnes sont-elles toujours d'actualité ? Prochaines dates ?
 3. Vrais tarifs de chaque soin et des rituels. Les noms des rituels (Escale Saly, Teranga Glow, Parenthèse à deux) vous conviennent-ils ?
-4. Les descriptions correspondent-elles à vos protocoles (hammam, kiné, amincissement) ?
-5. Le logo en fichier (PDF, SVG ou PNG haute définition), pour remplacer la version décalquée de l'enseigne.
-6. Accord écrit pour utiliser vos photos (façade, entrée, cabine).
-7. 15 à 20 photos réelles : cabines, hammam, balnéo, équipe, produits.
-8. Accord pour citer vos avis Google sur le site.
-9. Numéro Wave / Orange Money pour les cartes cadeaux.
-10. Nom de domaine souhaité (medi-spa-saly.sn ?).
+4. Les descriptions correspondent-elles à vos pratiques, soin par soin ? Déroulés, FAQ, durées, bilan amincissement offert.
+5. Que fournissez-vous aux clientes (linge, sous-vêtements jetables, boisson, thé dans un rituel) ? Les cabines sont-elles climatisées ? Quel matériel d'épilation utilisez-vous ? Le site n'en dit rien tant que ce n'est pas confirmé.
+6. Le logo en fichier (PDF, SVG ou PNG haute définition), pour remplacer la version décalquée de l'enseigne.
+7. Accord écrit pour utiliser vos photos (façade, entrée, cabine).
+8. 15 à 20 photos réelles : cabines, hammam, balnéo, équipe, produits.
+9. Accord pour citer vos avis Google sur le site.
+10. Numéro Wave / Orange Money pour les cartes cadeaux.
+11. Nom de domaine souhaité (medi-spa-saly.sn ?).
 
 Fichiers : `site/` (le site), `maquettes/` (directions A/B et variantes de couleur), `message-approche.txt` (scripts FR).
