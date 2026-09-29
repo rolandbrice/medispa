@@ -47,6 +47,17 @@ for await (const fichier of pagesHtml(DIST)) {
   // Règles de texte (spec, révision 1) : ni point médian comme séparateur, ni flèche.
   if (/ · /.test(visible)) err('point médian « · » dans le texte');
   if (/[→➔➜]/.test(visible)) err('flèche dans le texte');
+  if (/&amp;(?:[a-z]+|#\d+);/.test(html)) err('entité HTML échappée par erreur (ex. « &amp;nbsp; » affiché en toutes lettres)');
+  if (langAttendue === 'fr') {
+    // Typographie française : espace insécable (et non ordinaire) avant « : ; ! ? » et à l'intérieur des guillemets.
+    // Balises retirées sans espace, pour ne pas créer de faux positifs aux jonctions de balises.
+    const colle = html
+      .replace(/<script[\s\S]*?<\/script>/g, '')
+      .replace(/<blockquote[\s\S]*?<\/blockquote>/g, '') // avis cités mot pour mot
+      .replace(/<[^>]+>/g, '');
+    const fautes = [...new Set(colle.match(/.{0,18}( [:;!?»]|« )/g) ?? [])];
+    if (fautes.length) err(`espace ordinaire avant une ponctuation double (${fautes.length}) : ${fautes.slice(0, 3).map((f) => `« ${f.trim()} »`).join(', ')}`);
+  }
   if (langAttendue === 'en') {
     const texte = html
       .replace(/<script[\s\S]*?<\/script>/g, ' ')

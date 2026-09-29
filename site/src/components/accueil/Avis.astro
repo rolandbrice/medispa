@@ -10,7 +10,7 @@ const { lang } = Astro.props;
 const _ = t(lang);
 // Uniquement des avis Google recopiés mot pour mot (voir content.config.ts).
 const avis = (await getCollection('avis')).sort((a, b) => b.data.date.localeCompare(a.data.date)).slice(0, 3);
-const guillemets = (l: Lang, s: string) => (l === 'fr' ? `« ${s} »` : `“${s}”`);
+const guillemets = (l: Lang, s: string) => (l === 'fr' ? `«\u202f${s}\u202f»` : `“${s}”`);
 ---
 <section class="mx-auto max-w-[900px] px-5 py-20 md:py-28">
   <h2 class="text-5xl md:text-6xl">{_('avis.titre')}</h2>

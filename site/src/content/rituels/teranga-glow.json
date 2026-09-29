@@ -1,10 +1,23 @@
 {
   "ordre": 2,
-  "nom": { "fr": "Teranga Glow", "en": "Teranga Glow" },
+  "nom": {
+    "fr": "Teranga Glow",
+    "en": "Teranga Glow"
+  },
   "duree": "90 min",
   "contenu": {
-    "fr": ["Hammam", "Gommage au gant", "Massage relaxant 60 min", "Thé offert"],
-    "en": ["Hammam", "Glove scrub", "60-min relaxing massage", "Complimentary tea"]
+    "fr": [
+      "Hammam",
+      "Gommage au gant",
+      "Massage relaxant 60 min",
+      "Thé offert"
+    ],
+    "en": [
+      "Hammam",
+      "Glove scrub",
+      "60-min relaxing massage",
+      "Complimentary tea"
+    ]
   },
   "prix": 35000,
   "vedette": true

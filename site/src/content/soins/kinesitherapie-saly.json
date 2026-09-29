@@ -16,13 +16,13 @@
     "en": "Assessment, then rehabilitation sessions."
   },
   "description": {
-    "fr": "Mal de dos, raideur, récupération après une blessure ou une opération : un bilan, puis une série de séances adaptée.",
+    "fr": "Mal de dos, raideur, récupération après une blessure ou une opération : un bilan, puis une série de séances adaptée.",
     "en": "Back pain, stiffness, recovery after injury or surgery: an assessment, then a tailored series of sessions."
   },
   "deroule": {
     "fr": [
-      "Bilan : vos douleurs, vos antécédents, vos objectifs.",
-      "Séance : mobilisation, renforcement, massage thérapeutique.",
+      "Bilan : vos douleurs, vos antécédents, vos objectifs.",
+      "Séance : mobilisation, renforcement, massage thérapeutique.",
       "Conseils et exercices à refaire chez vous."
     ],
     "en": [
@@ -55,11 +55,11 @@
   "faq": [
     {
       "q": {
-        "fr": "Faut-il une ordonnance ?",
+        "fr": "Faut-il une ordonnance ?",
         "en": "Do I need a prescription?"
       },
       "r": {
-        "fr": "Écrivez-nous sur WhatsApp en décrivant votre situation : nous vous indiquerons la marche à suivre.",
+        "fr": "Écrivez-nous sur WhatsApp en décrivant votre situation : nous vous indiquerons la marche à suivre.",
         "en": "Message us on WhatsApp describing your situation: we will tell you how to proceed."
       }
     }
@@ -70,7 +70,7 @@
       "en": "Physiotherapy in Saly, Senegal — back pain, recovery, fitness | MEDI-SPA Saly"
     },
     "description": {
-      "fr": "Kinésithérapie à Saly Portudal, face au Totem : bilan, séances de rééducation et de remise en forme. Prise de rendez-vous sur WhatsApp.",
+      "fr": "Kinésithérapie à Saly Portudal, face au Totem : bilan, séances de rééducation et de remise en forme. Prise de rendez-vous sur WhatsApp.",
       "en": "Physiotherapy in Saly Portudal, opposite the Totem: assessment, rehabilitation and fitness sessions. Appointments on WhatsApp."
     }
   }

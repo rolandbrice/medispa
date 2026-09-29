@@ -21,7 +21,7 @@
   },
   "deroule": {
     "fr": [
-      "Accueil et quelques questions : zones tendues, pression souhaitée.",
+      "Accueil et quelques questions : zones tendues, pression souhaitée.",
       "Installation en cabine, serviettes chaudes.",
       "Massage aux huiles, à votre rythme.",
       "Temps de repos et boisson avant de repartir."
@@ -90,7 +90,7 @@
   "faq": [
     {
       "q": {
-        "fr": "Peut-on se faire masser à deux ?",
+        "fr": "Peut-on se faire masser à deux ?",
         "en": "Can we have a massage together?"
       },
       "r": {
@@ -100,21 +100,21 @@
     },
     {
       "q": {
-        "fr": "Que faut-il prévoir ?",
+        "fr": "Que faut-il prévoir ?",
         "en": "What should I bring?"
       },
       "r": {
-        "fr": "Rien : serviettes et sous-vêtements jetables sont fournis. Arrivez cinq minutes en avance pour profiter pleinement du soin.",
+        "fr": "Rien : serviettes et sous-vêtements jetables sont fournis. Arrivez cinq minutes en avance pour profiter pleinement du soin.",
         "en": "Nothing: towels and disposable underwear are provided. Arrive five minutes early to make the most of your treatment."
       }
     },
     {
       "q": {
-        "fr": "Est-ce possible pendant la grossesse ?",
+        "fr": "Est-ce possible pendant la grossesse ?",
         "en": "Is it possible during pregnancy?"
       },
       "r": {
-        "fr": "Dites-le-nous en réservant : nous vous indiquerons le soin adapté, ou vous conseillerons d'attendre.",
+        "fr": "Dites-le-nous en réservant : nous vous indiquerons le soin adapté, ou vous conseillerons d'attendre.",
         "en": "Tell us when you book: we will suggest a suitable treatment or advise you to wait."
       }
     }
