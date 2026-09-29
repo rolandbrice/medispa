@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
 
-Sitemap: https://medi-spa-saly.sn/sitemap.xml
+Sitemap: https://medi-spa-saly.sn/sitemap-index.xml

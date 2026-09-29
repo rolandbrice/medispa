@@ -1,1 +1,35 @@
-{"author": "", "dependencies": {"@astrojs/tailwind": "^6.0.2", "astro": "^7.3.5", "tailwindcss": "^3.4.19"}, "description": "MEDI-SPA Saly — site vitrine premium gérable sans WordPress (Astro + Decap CMS)", "keywords": ["spa", "saly", "senegal", "astro", "decap"], "license": "UNLICENSED", "main": "index.js", "name": "medi-spa-saly", "private": true, "scripts": {"build": "astro build", "dev": "astro dev", "preview": "astro preview"}, "type": "module", "version": "1.0.0"}
+{
+  "author": "",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/cormorant-garamond": "^5.3.0",
+    "@fontsource-variable/jost": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.5",
+    "tailwindcss": "^4.3.3"
+  },
+  "description": "MEDI-SPA Saly — site FR/EN statique (Astro), réservation et carte cadeau via WhatsApp",
+  "keywords": [
+    "spa",
+    "saly",
+    "senegal",
+    "astro",
+    "whatsapp"
+  ],
+  "license": "UNLICENSED",
+  "main": "index.js",
+  "name": "medi-spa-saly",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "verifier": "node scripts/verifier-dist.mjs"
+  },
+  "type": "module",
+  "version": "1.0.0",
+  "devDependencies": {
+    "vitest": "^5.0.2"
+  }
+}
