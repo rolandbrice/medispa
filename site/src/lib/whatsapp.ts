@@ -13,8 +13,7 @@ const MOMENTS: Record<Lang, Record<Creneau, string>> = {
 export type DemandeReservation = { soin: string; formule?: string; prix?: string; jour: Date; creneau: Creneau; prenom: string };
 
 export function messageReservation(d: DemandeReservation, lang: Lang): string {
-  const formule = [d.formule, d.prix && `(${d.prix})`].filter(Boolean).join(' ');
-  const soin = formule ? `${d.soin} — ${formule}` : d.soin;
+  const soin = [d.soin, d.formule, d.prix].filter(Boolean).join(', ');
   const quand = `${formaterJour(d.jour, lang)}, ${MOMENTS[lang][d.creneau]}`;
   const prenom = d.prenom.trim();
   return lang === 'fr'

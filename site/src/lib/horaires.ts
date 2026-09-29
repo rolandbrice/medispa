@@ -63,3 +63,33 @@ export const formaterPlage = ([ouverture, fermeture]: [string, string], lang: La
 
 export const formaterMois = (aaaaMm: string, lang: Lang) =>
   new Intl.DateTimeFormat(LOCALE[lang], { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${aaaaMm}-01T00:00:00Z`));
+
+const SEMAINE: Jour[] = ['lun', 'mar', 'mer', 'jeu', 'ven', 'sam', 'dim'];
+const NOMS: Record<Lang, Record<Jour, string>> = {
+  fr: { lun: 'lundi', mar: 'mardi', mer: 'mercredi', jeu: 'jeudi', ven: 'vendredi', sam: 'samedi', dim: 'dimanche' },
+  en: { lun: 'Monday', mar: 'Tuesday', mer: 'Wednesday', jeu: 'Thursday', ven: 'Friday', sam: 'Saturday', dim: 'Sunday' },
+};
+
+/** « Du lundi au samedi, de 9 h à 20 h. » : les jours consécutifs aux mêmes horaires sont regroupés, les jours fermés omis. */
+export function resumerHoraires(horaires: Horaires, lang: Lang): string {
+  const groupes: { debut: Jour; fin: Jour; plage: [string, string] }[] = [];
+  for (const jour of SEMAINE) {
+    const plage = horaires[jour];
+    const dernier = groupes.at(-1);
+    const suit = dernier && SEMAINE.indexOf(jour) === SEMAINE.indexOf(dernier.fin) + 1;
+    if (!plage) continue;
+    if (dernier && suit && dernier.plage.join() === plage.join()) dernier.fin = jour;
+    else groupes.push({ debut: jour, fin: jour, plage });
+  }
+  return groupes
+    .map(({ debut, fin, plage: [o, f] }) => {
+      const n = NOMS[lang];
+      if (lang === 'fr') {
+        const jours = debut === fin ? `Le ${n[debut]}` : `Du ${n[debut]} au ${n[fin]}`;
+        return `${jours}, de ${formaterHeure(o, lang)} à ${formaterHeure(f, lang)}.`;
+      }
+      const jours = debut === fin ? n[debut] : `${n[debut]} to ${n[fin]}`;
+      return `${jours}, ${formaterHeure(o, lang)} to ${formaterHeure(f, lang)}.`;
+    })
+    .join(' ');
+}

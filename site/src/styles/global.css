@@ -1,85 +1,67 @@
 @import "tailwindcss";
-@import "@fontsource-variable/jost";
-@import "@fontsource-variable/cormorant-garamond";
-@import "@fontsource-variable/cormorant-garamond/wght-italic.css";
+@import "@fontsource/young-serif";
+@import "@fontsource-variable/hanken-grotesk";
 
 @theme {
-  --color-creme: #F7F1E8;
-  --color-taupe: #D5C4B2;
-  --color-or: #D8C890;
-  --color-or-vif: #B8964E;
-  --color-or-profond: #7A5F1E;
-  --color-brun: #5C4A3A;
-  --color-encre: #2A1A10;
-  --font-serif: "Cormorant Garamond Variable", Georgia, serif;
-  --font-sans: "Jost Variable", system-ui, sans-serif;
-  --ease-doux: cubic-bezier(.22, 1, .36, 1);
+  --color-lagune: #2F5D57;
+  --color-lagune-trait: #46746D;
+  --color-lagune-profond: #1D3B37;
+  --color-lagune-doux: #4E6B66;
+  --color-ecume: #CFE0DB;
+  --color-brume: #E4EEEB;
+  --color-safran: #E9B949;
+  --font-serif: "Young Serif", Georgia, serif;
+  --font-sans: "Hanken Grotesk Variable", system-ui, sans-serif;
 }
 
 @layer base {
-  html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
-  body { @apply bg-creme text-encre font-sans antialiased; text-rendering: optimizeLegibility; }
+  html { -webkit-tap-highlight-color: transparent; }
+  body { @apply bg-white font-sans text-[17px] leading-[1.6] text-lagune-profond antialiased; }
   h1, h2, h3 { @apply font-serif font-normal; text-wrap: balance; }
   p { text-wrap: pretty; }
-  :focus-visible { outline: 3px solid var(--color-or-profond); outline-offset: 3px; border-radius: 2px; }
-  .sombre :focus-visible { outline-color: var(--color-or); }
+  :focus-visible { outline: 3px solid var(--color-safran); outline-offset: 3px; }
+  summary::-webkit-details-marker { display: none; }
 }
 
-/* Petit texte en capitales espacées au-dessus des titres */
-.surtitre { @apply text-[11px] uppercase tracking-[.32em] font-medium; }
-
-/* Apparition au scroll, décalage via --d. Sans JS (pas de classe .js), tout reste visible. */
-.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease-doux), transform .9s var(--ease-doux); transition-delay: var(--d, 0s); }
-.js .reveal.visible { opacity: 1; transform: none; }
-
-/* Motifs de la marque : arche (demi-disque en haut) et sablier (affiche des Nocturnes) */
-.arche { border-radius: 999px 999px 0 0; }
-.arche-inverse { border-radius: 0 0 999px 999px; }
-.sablier { clip-path: polygon(0 0, 100% 0, 50% 50%, 100% 100%, 0 100%, 50% 50%); }
-
-/* Grain léger sur les aplats sombres */
-.grain { position: relative; isolation: isolate; }
-.grain::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .09; z-index: -1;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+/* Logo de l'enseigne : un seul fichier SVG en cache, coloré par la couleur du texte */
+.logo {
+  display: block; aspect-ratio: 2506 / 455; background: currentColor;
+  -webkit-mask: url("/logo-medi-spa.svg") center / contain no-repeat;
+  mask: url("/logo-medi-spa.svg") center / contain no-repeat;
 }
 
-/* Lien avec trait qui se dessine */
-.lien-trait { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .4s var(--ease-doux); }
-.lien-trait:hover, .lien-trait[aria-current="page"] { background-size: 100% 1px; }
+/* Le sablier de l'affiche : deux demi-disques de photo */
+.demi-haut { border-radius: 0 0 999px 999px; }
+.demi-bas { border-radius: 999px 999px 0 0; }
 
-/* Flèche des CTA qui glisse */
-.fleche { display: inline-block; transition: transform .3s var(--ease-doux); }
-:where(a, button):hover .fleche { transform: translateX(4px); }
+/* Boutons en pilule, nommés par l'action */
+.bouton { @apply inline-block rounded-full bg-safran px-7 py-3.5 font-semibold text-lagune-profond transition-colors hover:bg-[#F2CB6B]; }
+.bouton-sombre { @apply inline-block rounded-full bg-lagune-profond px-7 py-3.5 font-semibold text-white transition-colors hover:bg-lagune; }
+.lien { @apply border-b border-current pb-px; }
+.lien:hover { @apply border-b-2; }
 
-.skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 100; @apply bg-encre text-creme px-5 py-3 text-xs uppercase tracking-[.2em]; transition: top .2s ease; }
-.skip-link:focus { top: 1rem; }
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .js .reveal { opacity: 1; transform: none; transition: none; }
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
-}
-
-summary::-webkit-details-marker { display: none; }
+/* Choix sous forme de pastilles (radios masqués) */
+.pastille { @apply relative flex cursor-pointer items-center justify-center gap-2 rounded-full border border-lagune-profond/25 bg-white px-5 py-3 text-center text-[15px] transition-colors; }
+.pastille:hover { @apply border-lagune-profond/60; }
+.pastille:has(input:checked) { @apply border-lagune-profond bg-lagune-profond text-white; }
+.pastille:has(input:disabled) { @apply cursor-not-allowed border-lagune-profond/10 text-lagune-profond/35; }
+.pastille:has(input:focus-visible) { outline: 3px solid var(--color-safran); outline-offset: 2px; }
+.pastille-jour { @apply w-[4.6rem] shrink-0 flex-col gap-0.5 rounded-2xl px-2 py-3; }
 
 /* Icône du menu mobile : deux traits qui se croisent à l'ouverture */
 .menu-icone { position: relative; width: 22px; height: 12px; }
 .menu-icone::before, .menu-icone::after {
   content: ''; position: absolute; left: 0; right: 0; height: 1.5px; background: currentColor;
-  transition: transform .3s var(--ease-doux), top .3s var(--ease-doux);
+  transition: transform .25s ease, top .25s ease;
 }
 .menu-icone::before { top: 2px; }
 .menu-icone::after { top: 9px; }
 .menu[open] .menu-icone::before { top: 5.5px; transform: rotate(45deg); }
 .menu[open] .menu-icone::after { top: 5.5px; transform: rotate(-45deg); }
 
-/* Choix sous forme de pastilles (radios masqués) */
-.pastille {
-  @apply relative flex cursor-pointer items-center justify-center gap-2 border border-encre/20 bg-creme px-4 py-3 text-center text-[15px] transition-colors;
+.skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 100; @apply rounded-full bg-safran px-5 py-3 font-semibold text-lagune-profond; transition: top .2s ease; }
+.skip-link:focus { top: 1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
-.pastille:hover { @apply border-encre/60; }
-.pastille:has(input:checked) { @apply border-encre bg-encre text-creme; }
-.pastille:has(input:disabled) { @apply cursor-not-allowed border-encre/10 text-encre/35; }
-.pastille:has(input:focus-visible) { outline: 3px solid var(--color-or-profond); outline-offset: 2px; }
-.pastille-jour { @apply w-[4.6rem] shrink-0 flex-col gap-1 px-2 py-3; }

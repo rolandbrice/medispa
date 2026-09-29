@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { creneauxDisponibles, formaterJour, formaterJourCourt, formaterMois, formaterPlage, prochainsJours, type Horaires } from './horaires';
+import { creneauxDisponibles, formaterJour, formaterJourCourt, formaterMois, formaterPlage, prochainsJours, resumerHoraires, type Horaires } from './horaires';
 
 const H: Horaires = {
   lun: ['09:00', '20:00'], mar: ['09:00', '20:00'], mer: ['09:00', '20:00'],
@@ -71,5 +71,17 @@ describe('formaterJour', () => {
   it('fournit une forme courte pour les pastilles du calendrier', () => {
     expect(formaterJourCourt(utc('2026-10-03T00:00:00'), 'fr')).toEqual({ jour: 'sam.', num: '3', mois: 'oct.' });
     expect(formaterJourCourt(utc('2026-10-03T00:00:00'), 'en')).toEqual({ jour: 'Sat', num: '3', mois: 'Oct' });
+  });
+});
+
+describe('resumerHoraires', () => {
+  it('regroupe les jours consécutifs aux mêmes horaires en une phrase', () => {
+    expect(resumerHoraires(H, 'fr')).toBe('Du lundi au samedi, de 9 h à 20 h.');
+    expect(resumerHoraires(H, 'en')).toBe('Monday to Saturday, 9 am to 8 pm.');
+  });
+  it('sépare les groupes aux horaires différents', () => {
+    const h: Horaires = { ...H, sam: ['10:00', '18:00'] };
+    expect(resumerHoraires(h, 'fr')).toBe('Du lundi au vendredi, de 9 h à 20 h. Le samedi, de 10 h à 18 h.');
+    expect(resumerHoraires(h, 'en')).toBe('Monday to Friday, 9 am to 8 pm. Saturday, 10 am to 6 pm.');
   });
 });

@@ -17,22 +17,22 @@ describe('lienWhatsApp', () => {
 describe('messageReservation', () => {
   it('rédige une demande complète en français', () => {
     const m = messageReservation(
-      { soin: 'Massage', formule: '60 min', prix: '20 000 FCFA', jour: samedi, creneau: 'apres-midi', prenom: '  Awa ' },
+      { soin: 'Massages', formule: 'Relaxant (60 min)', prix: '20 000 FCFA', jour: samedi, creneau: 'apres-midi', prenom: '  Awa ' },
       'fr',
     );
     expect(m).toBe(
-      "Bonjour MEDI-SPA Saly,\nJe souhaite réserver : Massage — 60 min (20 000 FCFA)\nQuand : samedi 3 octobre, l'après-midi\nPrénom : Awa\nMerci de me confirmer l'horaire.",
+      "Bonjour MEDI-SPA Saly,\nJe souhaite réserver : Massages, Relaxant (60 min), 20 000 FCFA\nQuand : samedi 3 octobre, l'après-midi\nPrénom : Awa\nMerci de me confirmer l'horaire.",
     );
   });
   it('omet formule et prix quand ils manquent (soin sur devis)', () => {
     const m = messageReservation({ soin: 'Kinésithérapie', jour: samedi, creneau: 'matin', prenom: 'Fatou' }, 'fr');
     expect(m).toContain('Je souhaite réserver : Kinésithérapie\n');
-    expect(m).not.toContain('()');
+    expect(m).not.toContain(', \n');
     expect(m).not.toContain('undefined');
   });
   it('rédige en anglais sur la version EN', () => {
     const m = messageReservation({ soin: 'Massage', formule: '60 min', jour: samedi, creneau: 'soir', prenom: 'Emma' }, 'en');
-    expect(m).toBe('Hello MEDI-SPA Saly,\nI would like to book: Massage — 60 min\nWhen: Saturday 3 October, in the evening\nName: Emma\nPlease confirm the time.');
+    expect(m).toBe('Hello MEDI-SPA Saly,\nI would like to book: Massage, 60 min\nWhen: Saturday 3 October, in the evening\nName: Emma\nPlease confirm the time.');
   });
 });
 

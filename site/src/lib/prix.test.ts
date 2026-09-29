@@ -31,8 +31,8 @@ describe('prixMin', () => {
 
 describe('aPartirDe', () => {
   it('annonce le plus petit prix payant', () => {
-    expect(aPartirDe([{ prix: 0 }, { prix: 20000 }, { prix: 180000 }], 'fr')).toBe('à partir de 20\u202f000\u00a0FCFA');
-    expect(aPartirDe([{ prix: 12000 }], 'en')).toBe('from 12,000\u00a0FCFA');
+    expect(aPartirDe([{ prix: 0 }, { prix: 20000 }, { prix: 180000 }], 'fr')).toBe('Dès 20\u202f000\u00a0FCFA');
+    expect(aPartirDe([{ prix: 12000 }], 'en')).toBe('From 12,000\u00a0FCFA');
   });
   it('dit « Sur devis » quand aucun prix payant n’existe', () => {
     expect(aPartirDe([{ prix: null }], 'fr')).toBe('Sur devis');
@@ -42,7 +42,7 @@ describe('aPartirDe', () => {
 
 describe('nomTarif', () => {
   it('combine libellé traduit et durée', () => {
-    expect(nomTarif({ prix: 1, duree: '60 min', libelle: { fr: 'Duo', en: 'Couple' } }, 'en')).toBe('Couple · 60 min');
+    expect(nomTarif({ prix: 1, duree: '60 min', libelle: { fr: 'Duo', en: 'Couple' } }, 'en')).toBe('Couple (60 min)');
   });
   it('se replie sur la durée seule, puis sur le libellé seul', () => {
     expect(nomTarif({ prix: 1, duree: '30 min' }, 'fr')).toBe('30 min');

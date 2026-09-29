@@ -18,13 +18,13 @@ export function prixMin(tarifs: Tarif[]): number | null {
 }
 
 export function nomTarif(t: Tarif, lang: Lang): string {
-  if (t.libelle && t.duree) return `${t.libelle[lang]} · ${t.duree}`;
+  if (t.libelle && t.duree) return `${t.libelle[lang]} (${t.duree})`;
   return t.libelle?.[lang] ?? t.duree ?? '';
 }
 
-/** « à partir de 12 000 FCFA » pour les listes ; « Sur devis » si aucun prix payant. */
+/** « Dès 12 000 FCFA » pour les listes ; « Sur devis » si aucun prix payant. */
 export function aPartirDe(tarifs: Tarif[], lang: Lang): string {
   const min = prixMin(tarifs);
   if (min === null) return formaterPrix(null, lang);
-  return `${lang === 'fr' ? 'à partir de' : 'from'} ${formaterPrix(min, lang)}`;
+  return `${lang === 'fr' ? 'Dès' : 'From'} ${formaterPrix(min, lang)}`;
 }
