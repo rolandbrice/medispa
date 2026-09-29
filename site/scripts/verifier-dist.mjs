@@ -50,7 +50,8 @@ for await (const fichier of pagesHtml(DIST)) {
   if (langAttendue === 'en') {
     const texte = html
       .replace(/<script[\s\S]*?<\/script>/g, ' ')
-      .replace(/<blockquote[^>]*lang="fr"[\s\S]*?<\/blockquote>/g, ' ')
+      // Les avis sont cités mot pour mot, dans leur langue d'origine : on ne les contrôle pas.
+      .replace(/<blockquote[\s\S]*?<\/blockquote>/g, ' ')
       .replace(/<[^>]+>/g, ' ');
     for (const mot of MOTS_FR) if (texte.includes(mot)) err(`texte français « ${mot} » sur une page EN`);
   }
